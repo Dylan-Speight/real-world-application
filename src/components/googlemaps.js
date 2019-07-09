@@ -27,7 +27,7 @@ render() {
                 </form>
             </div>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key:"AIzaSyCgZJe4oyVbeucoA2e2RvWAK9P8IQgG1Dk" }}
+                    bootstrapURLKeys={{ key: /* replace with env */}}
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                     >
