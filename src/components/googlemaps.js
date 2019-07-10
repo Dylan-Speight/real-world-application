@@ -80,7 +80,7 @@ class GoogleMapContainer extends Component {
                     <input id="address" type="textbox" defaultValue="Sydney, NSW" />
                     <input id="submit" type="button" defaultValue="Geocode" />
                 </div>                
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFEQyn3F9EYa1GoQUyvEJbnD-4KQjkwLM&callback=initMap"></script>
+//                 <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
                 <div className='formCont'>
                     <form onSubmit={this.handleSubmit}>
                         <label>Latitude:
@@ -95,7 +95,7 @@ class GoogleMapContainer extends Component {
                 </div>
                     <GoogleMapReact
 
-                        bootstrapURLKeys={{ key:"AIzaSyCgZJe4oyVbeucoA2e2RvWAK9P8IQgG1Dk" }}
+                        bootstrapURLKeys={{ key:"" }}
                         defaultCenter={this.props.center}
                         defaultZoom={this.props.zoom}
                         center={{lat: this.props.lat, lng: this.props.lng}}
