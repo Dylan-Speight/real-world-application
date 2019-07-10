@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: grey;
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
@@ -19,6 +19,9 @@
   color: white;
 }
 
+Link:visited {
+  color: white;
+}
 .App-link {
   color: #61dafb;
 }
