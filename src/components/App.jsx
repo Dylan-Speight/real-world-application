@@ -2,7 +2,9 @@ import React from 'react';
 import '../App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import GoogleMapContainer from "./googlemaps"
-import GetAccessToken from "./domain"
+// import { getAccessToken, getListingById } from "./domain"
+import GenerateToken from './domain'
+// import DisplayMarkers from "./displayMarkers"
 
 function App() {
   return (
@@ -11,11 +13,17 @@ function App() {
         <header className="App-header">
         <Link to="/map/">Map</Link>
         <Link to="/domain/">Map</Link>
+        {/* <button onClick={(e) => {new GenerateToken(e)}} />  */}
 
         </header>
         <Route path="/map/" component={GoogleMapContainer} />
-  <Route path="/domain/" render={() => <p>{GetAccessToken()}</p>} />
+        {/* <button onClick={() => getAccessToken()} /> */}
+        {/* <button onClick={() => new GenerateToken} /> */}
 
+        {/* <button onClick={() => getListingById()} /> */}
+        <div>
+            </div>
+        <Route path="/domain/" component  ={GenerateToken}/>
       </BrowserRouter>
     </div>
   );
