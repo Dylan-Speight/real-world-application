@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import queryString from 'query-string'
+import GoogleMapContainer from "./googlemaps"
 
 export class GenerateToken extends Component {
 
@@ -41,6 +42,7 @@ export class GenerateToken extends Component {
                     'Authorization': `Bearer ${this.state.token}`
                 }
             })
+
             .then(result => {
                 let markers = []
                 const { data } = result;
@@ -48,13 +50,20 @@ export class GenerateToken extends Component {
                 this.state.results.map(result => markers.push({"latitude": result.listing.propertyDetails.latitude, 'longitude': result.listing.propertyDetails.longitude }))
                 this.setState({markers:markers})
                 console.log(this.state.markers)
+
+
             }).catch(err => console.error(err.response.data))
-        }
+
+    }
+    
     render(){
             return (
                     <div>
                         <button onClick={this.getAccessToken}>GenerateToken</button>
                         <button onClick={this.getListingById}>Search for listings</button>
+                        {/* <button onClick={this.testFunc}>Render map</button> */}
+                        <GoogleMapContainer {...this.state}></GoogleMapContainer>
+                        {/* <div>{this.props}</div> */}
                     </div>
             );
         }
@@ -63,4 +72,4 @@ function base64(str) {
     return Buffer.from(str).toString('base64')
 }
 
-export default GenerateToken 
+export default GenerateToken

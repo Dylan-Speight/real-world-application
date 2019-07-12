@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import GenerateToken from './domain'
+
 import GoogleMapReact, { Marker, map, maps } from 'google-map-react'
 import { renderMarkers } from './markers'
 const google = window.google;
@@ -18,14 +20,14 @@ class GoogleMapContainer extends Component {
             lat: "",
             lng: "",
             markers: [{latitude: -27, longitude: 153},{latitude: 100, longitude: 30}, {latitude: 39, longitude: 2}]
+
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        console.log(props)
+
     }
     
-    componentHasMounted(){
-        this.setState({})
-    }
     static defaultProps = {
         zoom: 11,
         lat: -27,
@@ -33,20 +35,11 @@ class GoogleMapContainer extends Component {
     }
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
-        // console.log(this.state)
     }
 
     handleSubmit(event) {
-        // console.log(this.state)
         event.preventDefault(); 
-        this.testMarkers();
-        // GoogleMapReact
-        //                 bootstrapURLKeys={{ key:process.env.REACT_APP_MAPS_APIKEY }}
-        //                 yesIWantToUseGoogleMapApiInternals={true}
-        //                 onGoogleApiLoaded={({map, maps}) => renderMarkers(map, maps)}
-        //             />       
-        // renderMarkers(map, maps)
-
+        // this.testMarkers();
     }
 
     // displayMarkers = () => {
@@ -66,15 +59,23 @@ class GoogleMapContainer extends Component {
     //         title: 'Hello World!'
     //     });
     //     }
-    testMarkers(map, maps, state){
-        console.log(this.state)
+    renderMarkers(map, maps){
+        console.log(GenerateToken.props)
         this.state.markers.map((newMarker, index) => {
             let marker = new maps.Marker({
                 position: {lat: newMarker.latitude, lng: newMarker.longitude},
                 map,
                 title: 'Hello World!'
             });
-    })}
+    })
+}
+mapsTest() {
+    // console.log(this.state)
+       console.log('mapstest this far')
+       return (<GoogleMapContainer {...this.state}/>)
+    // )
+
+}
     render() {
         return (
             <div className="maps-wrapper" style={mapStyles}>

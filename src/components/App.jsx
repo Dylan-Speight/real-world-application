@@ -5,7 +5,7 @@ import GoogleMapContainer from "./googlemaps"
 // import { getAccessToken, getListingById } from "./domain"
 import GenerateToken from './domain'
 // import DisplayMarkers from "./displayMarkers"
-
+// console.log(GenerateToken.mapsTest)
 function App() {
   return (
     <div className="App">
@@ -13,6 +13,7 @@ function App() {
         <header className="App-header">
         <Link to="/map/">Map</Link>
         <Link to="/domain/">Map</Link>
+
         {/* <button onClick={(e) => {new GenerateToken(e)}} />  */}
 
         </header>
@@ -23,7 +24,8 @@ function App() {
         {/* <button onClick={() => getListingById()} /> */}
         <div>
             </div>
-        <Route path="/domain/" component  ={GenerateToken}/>
+        <Route path="/domain/" component={GenerateToken}/>
+
       </BrowserRouter>
     </div>
   );
