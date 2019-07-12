@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import GenerateToken from './domain'
-
 import GoogleMapReact, { Marker, map, maps } from 'google-map-react'
 import { renderMarkers } from './markers'
 const google = window.google;
@@ -13,7 +11,6 @@ const mapStyles = {
 }
 
 class GoogleMapContainer extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -60,7 +57,7 @@ class GoogleMapContainer extends Component {
     //     });
     //     }
     renderMarkers(map, maps){
-        console.log(GenerateToken.props)
+        // console.log(GenerateToken.props)
         this.state.markers.map((newMarker, index) => {
             let marker = new maps.Marker({
                 position: {lat: newMarker.latitude, lng: newMarker.longitude},
