@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  max-width: 100%;
 }
 
 .App-logo {
@@ -33,4 +34,21 @@ Link:visited {
   to {
     transform: rotate(360deg);
   }
+}
+.mapsclass {
+  width:500px;
+  height: 500px;
+
+}
+
+.propertyImage img{
+  
+  width: 80%;
+  /* height: 200px; */
+}
+
+.resultsContainer {
+  display: flex;
+  flex-direction: row;
+  
 }

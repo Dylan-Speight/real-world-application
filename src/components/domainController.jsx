@@ -8,14 +8,14 @@ export class DomainController {
         this.results = []
         this.markers = []
         this.data = {"locations": [
-              {"state": props.state,
+              {"suburb": props.suburb, "state": props.state,
                 "postCode": props.postcode}
             ]}  
         // this.getAccessToken = this.getAccessToken.bind(this)
         // this.getListingById = this.getListingById.bind(this)
    };
     getAccessToken() {
-        // console.log(this.data)
+        console.log(this.data)
 
         const clientId = process.env.REACT_APP_DOMAIN_CLIENTID
         const secret = process.env.REACT_APP_DOMAIN_SECRET
@@ -35,37 +35,36 @@ export class DomainController {
     }
     
     getListingById(props) {
-        console.log(this.token)
-        console.log(this.data)
-        console.log(props)
+        // console.log(this.token)
+        // console.log(this.data)
+        // let searchParams = []
+        // Object.values(this.data.locations[0]).map(field => {
+        //     console.log(field)
+        //     if (field !== undefined) {
+        //         searchParams.push(field)
+        //         // drop undefined before calling googlemaps
+        //     }
+        // })
+        // console.log(searchParams)
 
-
+        // console.log(props)
             return axios.post(`https://api.domain.com.au/v1/listings/residential/_search`, this.data, {
                 headers: {
                     'Authorization': `Bearer ${this.token}`
                 }
             })
             .then(result => {
-                let markerResult  = []
+                let info = []
                 const { data } = result;
                 // console.log(data)
-                data.map((listingResult) => {
-                     if ((listingResult.type === "PropertyListing") && (listingResult.listing.listingType === "Sale") && (/[/$/]/.test(listingResult.listing.priceDetails.displayPrice))){
-                        console.log(listingResult.listing.priceDetails.displayPrice)
-                        markerResult.push({"latitude": listingResult.listing.propertyDetails.latitude, 'longitude': listingResult.listing.propertyDetails.longitude })
+                data.map((property) => {
+                     if ((property.type === "PropertyListing") && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
+                        info.push(property)
                     }})
-                this.markers = markerResult
-                console.log(this.markers)
-                return this.markers
+                this.results = info
+                return (this.results)
             }).catch(err => console.error(err.response.data))
     }
-
-    render(){
-            return (<div>test2
-                {/* <button onClick={this.getAccessToken}>GenerateToken</button>
-                <button onClick={this.getListingById}>Search for listings</button>      */}
-                </div>)
-        }
     }
     
 function base64(str) {
