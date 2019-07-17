@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import DomainPage from './domainPage'
+import DomainPage from './domainPage';
 
 function App() {
   return (

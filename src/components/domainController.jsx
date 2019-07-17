@@ -1,4 +1,3 @@
-import React  from 'react'
 import axios from 'axios'
 import queryString from 'query-string'
 
@@ -7,22 +6,23 @@ export class DomainController {
         this.token = props.token
         this.results = []
         this.markers = []
+        this.pageEnd = false;
         this.data = {"locations": [
               {"suburb": props.suburb, "state": props.state,
                 "postCode": props.postcode}
-            ]}  
-        // this.getAccessToken = this.getAccessToken.bind(this)
-        // this.getListingById = this.getListingById.bind(this)
-   };
+            ], "page": 1,"pageSize": 99 }  
+        this.propertiesToRemove = ['advertiser', 'hasFloorplan', 'hasVideo', 'headline', 'inspectionSchedule', 'labels', 'listingSlug', 'summaryDescription']
+   }
+
     getAccessToken() {
         console.log(this.data)
-
         const clientId = process.env.REACT_APP_DOMAIN_CLIENTID
         const secret = process.env.REACT_APP_DOMAIN_SECRET
         const data = queryString.stringify({
             grant_type: 'client_credentials',
             scope: 'api_listings_read'
         })
+        
         return axios.post('https://auth.domain.com.au/v1/connect/token', data, {
             headers: {
                 'Authorization': `Basic ${base64(`${clientId}:${secret}`)}`,
@@ -35,37 +35,32 @@ export class DomainController {
     }
     
     getListingById(props) {
-        // console.log(this.token)
-        // console.log(this.data)
-        // let searchParams = []
-        // Object.values(this.data.locations[0]).map(field => {
-        //     console.log(field)
-        //     if (field !== undefined) {
-        //         searchParams.push(field)
-        //         // drop undefined before calling googlemaps
-        //     }
-        // })
-        // console.log(searchParams)
-
-        // console.log(props)
             return axios.post(`https://api.domain.com.au/v1/listings/residential/_search`, this.data, {
                 headers: {
                     'Authorization': `Bearer ${this.token}`
                 }
             })
             .then(result => {
-                let info = []
                 const { data } = result;
-                // console.log(data)
-                data.map((property) => {
-                     if ((property.type === "PropertyListing") && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
-                        info.push(property)
+                data.map((property) => { 
+                     if ((property.type === "PropertyListing") && (property.listing.hasOwnProperty("media")) && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
+                        this.propertiesToRemove.map(currentProperty => {                             
+                            if (property.listing.hasOwnProperty(currentProperty)) {
+                            delete property.listing[currentProperty]
+                        }})
+
+                        this.results.push(property)
                     }})
-                this.results = info
-                return (this.results)
-            }).catch(err => console.error(err.response.data))
-    }
-    }
+                    if (data.length === 0) {
+                        return this.results
+                    }
+                    else {
+                        this.data.page += 1
+                        return (this.getListingById(this.results))  
+                    }
+            }).catch(err => console.error(err.data))
+     }
+}
     
 function base64(str) {
     return Buffer.from(str).toString('base64')

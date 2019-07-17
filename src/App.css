@@ -35,20 +35,67 @@ Link:visited {
     transform: rotate(360deg);
   }
 }
-.mapsclass {
-  width:500px;
-  height: 500px;
+
+
+.resultsContainer {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.noResults {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.mapsWrapper {
+  display:flex;
+  justify-content: center;
+  justify-content: space-around;
+  /* padding: 10vh; */
+  height: 100%;
+  width: 100%;
+}
+.googleMap {
+  display: flex;
+  width:50%;
+  height: 50vh;
 
 }
 
+.propertyResults{
+  display:flex;
+  width: 50%;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.propertyCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.propertyImageAddress{
+  padding:1vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: #61dafb;
+
+}
 .propertyImage img{
-  
-  width: 80%;
+  width: 15vw;
   /* height: 200px; */
 }
 
-.resultsContainer {
+.propertyPriceDetails {
   display: flex;
   flex-direction: row;
-  
+  justify-content: space-evenly;
+  background: grey;
 }
+
+
