@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 
 
-
+//Querying the database with gql
 const InvestmentQuery = gql`
   {
     investments {
@@ -23,7 +23,7 @@ function App() {
   )
 }
 
-export default graphql(InvestmentQuery)(App);
+export default graphql(InvestmentQuery)(App); //Higher order function to export through apollo
 
 
 //Example of calling from the database
