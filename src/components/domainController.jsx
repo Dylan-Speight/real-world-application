@@ -8,9 +8,9 @@ export class DomainController {
         this.markers = []
         this.pageEnd = false;
         this.data = {"locations": [
-              {"suburb": props.suburb, "state": props.state,
+              {"suburb": props.suburb,
                 "postCode": props.postcode}
-            ], "page": 1,"pageSize": 99 }  
+            ], "page": 1,"pageSize": 99, "listingType": "Sale", "sort": {"sortKey": "Price"}}  
         this.propertiesToRemove = ['advertiser', 'hasFloorplan', 'hasVideo', 'headline', 'inspectionSchedule', 'labels', 'listingSlug', 'summaryDescription']
    }
 

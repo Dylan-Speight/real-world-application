@@ -1,72 +1,64 @@
 import React, {Component} from 'react'
-
-import cookie from 'react-cookies';
-import { Link } from 'react-router-dom';
+import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 var jwtDecode = require('jwt-decode');
 
 
-export default class UserLogin extends Component {
+export default class UserRegister extends Component {
     constructor(props) {
         super(props)
         this.state = {
             email:"",
             password: "",
-            loggedIn: false
+            isRegistering: true
+
         }
-        this.login = this.login.bind(this)
+        this.register = this.register.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        // this.client = this.client.bind(this)
     }
     
     handleChange(event) {
         console.log(event.target.value)
-
         const { value, name } = event.target;
         this.setState({[name]:value})
         console.log(this.state)
         
     }
     onSubmit = (event) => {
+        
         event.preventDefault();
         console.log(JSON.stringify(this.state))
-        fetch('http://localhost:4000/api/authenticate', {
+        fetch('http://localhost:4000/api/register', {
             method: 'POST',
-            body: JSON.stringify({
-                email:"test9@test.com",
-                password: "password"
-            }),
+            body: JSON.stringify(this.state),
             headers: {
               'Content-Type': 'application/json'
             }
-        }).then(async res => {
-            const response = await res.json()
-            cookie.save("token", await response.token, {path: "/"})
+          })
+          .then(res => {
             if (res.status === 200) {
-                this.setState({"loggedIn": true})
-                cookie.save("loggedIn", "true", {path: "/"})
-
-                this.props.history.push('/domain');
+              this.props.history.push('/');
             } else {
-                const error = new Error(res.error)    ;
-                throw error;
+               const error = res.json().then(response => {
+                console.log(response.error)
+                // return (response.error)
+            }).then( () => {throw error})
             }
-        })
-        .catch(err => {
-            console.error(err);
+          })
+          .catch(err => {
             alert('Error logging in please try again');
-        });    
-    }
+          });    
+        }
     
-    login (event) {
+    register (event) {
         console.log(event.target.name)
         
         alert("Logged" + this.state.email + this.state.password )
     }
     render(){
+      if (this.state.isRegistering){
         return(
             <div>
-                <p> Don't have an account?</p>
-                <Link to="/register">Sign Up</Link>
                 <div>
                 <form onSubmit={this.onSubmit}>
                     <input 
@@ -74,18 +66,19 @@ export default class UserLogin extends Component {
                     placeholder="Email"
                     value={this.state.email} 
                     onChange={this.handleChange}
-                    // required
-                    ></input>
+                    required></input>
                     <input name="password" 
                     placeholder="Password" 
                     value={this.state.password}
                     onChange={this.handleChange}
-                    // required
-                    ></input>
-                    <input type="submit" value="Login"/>
+                    required></input>
+                    <input type="submit" value="Register"/>
                 </form>
                 </div>
             </div>
         )
+      }
+      return <Redirect to={'/login'} />
+
     }
 }
