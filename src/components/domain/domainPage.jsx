@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import DomainController from './domainController'
-import GoogleMapsController from './googleMapsController'
+import GoogleMapsController from '../google_maps/googleMapsController'
 import cookie from 'react-cookies'
 class DomainPage extends Component {
     constructor(props) {
@@ -84,8 +84,6 @@ class DomainPage extends Component {
                         <input type="string" name="suburb" onChange={this.handleChange} />
                         <label>Postcode:</label>
                         <input type="string" name="postcode" onChange={this.handleChange} />
-                        {/* <label>State:</label>
-                        <input type="string" name="state"   onChange={this.handleChange} /> */}
                         <input type="submit" value="Submit"/>
                     </form>
                 </div>

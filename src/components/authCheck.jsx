@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import cookie from 'react-cookies';
 
-export default function withAuth(ComponentToProtect) {
+export default function authCheck(ComponentToProtect) {
   return class extends Component {
     constructor() {
       super();

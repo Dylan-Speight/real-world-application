@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import cookie from 'react-cookies';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
+import LoggedInContext, { LoggedInProvider, LoggedInConsumer } from './userContext'
 
 export default class Logout extends Component {
     constructor(props) {
@@ -9,10 +10,12 @@ export default class Logout extends Component {
             isLoggingOut: true
         }
     }
+    
     doLogout() {
         cookie.remove('token', {path: "/"})
-        cookie.save('loggedIn', "false", {path: "/"})
+        cookie.save('isLoggedIn', "false", {path: "/"})
         this.setState({isLoggingOut: false})
+        console.log(this.state.isLoggingOut)
     }
     componentDidMount() {
         this.doLogout()
@@ -21,7 +24,9 @@ export default class Logout extends Component {
         if (this.state.isLoggingOut) {
             return <div/>
         }
-        return <Redirect to={{pathname:"/", state: {loggedIn: false}}} />
+        return(
+            <Redirect to="/" /> 
+        )
     }
 }
 

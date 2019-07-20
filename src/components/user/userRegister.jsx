@@ -13,7 +13,6 @@ export default class UserRegister extends Component {
             isRegistering: true
 
         }
-        this.register = this.register.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
     
@@ -37,11 +36,10 @@ export default class UserRegister extends Component {
           })
           .then(res => {
             if (res.status === 200) {
-              this.props.history.push('/');
+              this.setState({isRegistering: false})
             } else {
                const error = res.json().then(response => {
                 console.log(response.error)
-                // return (response.error)
             }).then( () => {throw error})
             }
           })
@@ -49,12 +47,7 @@ export default class UserRegister extends Component {
             alert('Error logging in please try again');
           });    
         }
-    
-    register (event) {
-        console.log(event.target.name)
-        
-        alert("Logged" + this.state.email + this.state.password )
-    }
+
     render(){
       if (this.state.isRegistering){
         return(
@@ -78,7 +71,6 @@ export default class UserRegister extends Component {
             </div>
         )
       }
-      return <Redirect to={'/login'} />
-
+      return (<Redirect to={'/login'} />)
     }
 }

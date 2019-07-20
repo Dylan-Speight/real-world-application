@@ -22,7 +22,6 @@ export class DomainController {
             grant_type: 'client_credentials',
             scope: 'api_listings_read'
         })
-        
         return axios.post('https://auth.domain.com.au/v1/connect/token', data, {
             headers: {
                 'Authorization': `Basic ${base64(`${clientId}:${secret}`)}`,
@@ -31,7 +30,7 @@ export class DomainController {
         }).then((result) => {
                     this.token= result.data.access_token 
                     return (this.token)             
-        }).catch(err => console.error(err.response.data))
+        }).catch(err => console.error(err))
     }
     
     getListingById(props) {
@@ -48,7 +47,6 @@ export class DomainController {
                             if (property.listing.hasOwnProperty(currentProperty)) {
                             delete property.listing[currentProperty]
                         }})
-
                         this.results.push(property)
                     }})
                     if (data.length === 0) {

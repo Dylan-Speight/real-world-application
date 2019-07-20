@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-
+import LoggedInContext  from './userContext'
 import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
-var jwtDecode = require('jwt-decode');
 
 
 export default class UserLogin extends Component {
@@ -10,31 +9,23 @@ export default class UserLogin extends Component {
         super(props)
         this.state = {
             email:"",
-            password: "",
-            loggedIn: false
+            password: ""
         }
         this.login = this.login.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        // this.client = this.client.bind(this)
     }
     
     handleChange(event) {
-        console.log(event.target.value)
-
         const { value, name } = event.target;
         this.setState({[name]:value})
-        console.log(this.state)
-        
     }
     onSubmit = (event) => {
         event.preventDefault();
-        console.log(JSON.stringify(this.state))
         fetch('http://localhost:4000/api/authenticate', {
             method: 'POST',
-            body: JSON.stringify({
-                email:"test9@test.com",
-                password: "password"
-            }),
+            body: JSON.stringify(
+                this.state
+            ),
             headers: {
               'Content-Type': 'application/json'
             }
@@ -42,9 +33,8 @@ export default class UserLogin extends Component {
             const response = await res.json()
             cookie.save("token", await response.token, {path: "/"})
             if (res.status === 200) {
-                this.setState({"loggedIn": true})
-                cookie.save("loggedIn", "true", {path: "/"})
-
+                cookie.save("isLoggedIn", "true", {path: "/"})
+                this.context.setLoggedInState(true)
                 this.props.history.push('/domain');
             } else {
                 const error = new Error(res.error)    ;
@@ -57,35 +47,37 @@ export default class UserLogin extends Component {
         });    
     }
     
-    login (event) {
-        console.log(event.target.name)
-        
+    login (event) {        
         alert("Logged" + this.state.email + this.state.password )
     }
     render(){
+        this.context = this.context
         return(
             <div>
                 <p> Don't have an account?</p>
                 <Link to="/register">Sign Up</Link>
                 <div>
-                <form onSubmit={this.onSubmit}>
-                    <input 
+                <form onSubmit={ this.onSubmit }>
+                <input 
                     name="email" 
                     placeholder="Email"
                     value={this.state.email} 
                     onChange={this.handleChange}
-                    // required
+                    required
                     ></input>
                     <input name="password" 
                     placeholder="Password" 
                     value={this.state.password}
                     onChange={this.handleChange}
-                    // required
+                    required
                     ></input>
                     <input type="submit" value="Login"/>
                 </form>
+
                 </div>
             </div>
         )
     }
 }
+
+UserLogin.contextType = LoggedInContext
