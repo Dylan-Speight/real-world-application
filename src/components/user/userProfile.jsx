@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
-import LoggedInContext, { LoggedInProvider, LoggedInConsumer } from './userContext'
-
+import LoggedInContext from './userContext'
+import findUserInvestment from './userInvestments'
 
 
 export default class UserProfile extends Component {
     constructor(props){
         super(props)
-        this.state = {}
     }
     render() {
+        this.context = this.context
+        console.log(this.context)
+        let investments = findUserInvestment(this.context.email)
         return (
             <div>
-                {/* fetch from db & return map */}
+                { investments}
             </div>
         )
     }
 }
+
+UserProfile.contextType = LoggedInContext

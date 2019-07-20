@@ -3,7 +3,7 @@ import cookie from 'react-cookies';
 import {Redirect, Link} from 'react-router-dom';
 import LoggedInContext, { LoggedInProvider, LoggedInConsumer } from './userContext'
 
-export default class Logout extends Component {
+export default class UserLogout extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,12 +15,17 @@ export default class Logout extends Component {
         cookie.remove('token', {path: "/"})
         cookie.save('isLoggedIn', "false", {path: "/"})
         this.setState({isLoggingOut: false})
+        this.context.setLoggedInState({isLoggedIn: false, email: "", token: ""})
         console.log(this.state.isLoggingOut)
     }
     componentDidMount() {
+        console.log(this.context)
+
         this.doLogout()
     }
     render() {
+        this.context = this.context
+
         if (this.state.isLoggingOut) {
             return <div/>
         }
@@ -30,3 +35,4 @@ export default class Logout extends Component {
     }
 }
 
+UserLogout.contextType = LoggedInContext

@@ -8,8 +8,8 @@ export default class UserLogin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email:"",
-            password: ""
+            email: "test@test.com",
+            password: "password1234"
         }
         this.login = this.login.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -25,16 +25,20 @@ export default class UserLogin extends Component {
             method: 'POST',
             body: JSON.stringify(
                 this.state
+            //     {email: "test@test.com",
+            // password: "password1234"}
             ),
             headers: {
               'Content-Type': 'application/json'
             }
         }).then(async res => {
+            console.log(this.state)
             const response = await res.json()
             cookie.save("token", await response.token, {path: "/"})
             if (res.status === 200) {
                 cookie.save("isLoggedIn", "true", {path: "/"})
-                this.context.setLoggedInState(true)
+                cookie.save("email", `${this.state.email}`, {path: "/"})
+                this.context.setLoggedInState({isLoggedIn: true, email: this.state.email, token: response.token})
                 this.props.history.push('/domain');
             } else {
                 const error = new Error(res.error)    ;
@@ -63,13 +67,13 @@ export default class UserLogin extends Component {
                     placeholder="Email"
                     value={this.state.email} 
                     onChange={this.handleChange}
-                    required
+                    // required
                     ></input>
                     <input name="password" 
                     placeholder="Password" 
                     value={this.state.password}
                     onChange={this.handleChange}
-                    required
+                    // required
                     ></input>
                     <input type="submit" value="Login"/>
                 </form>

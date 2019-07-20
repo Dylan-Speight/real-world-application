@@ -16,12 +16,13 @@ export default class Header extends Component{
 
         console.log(this.context)
         let loginButton = <LoggedInContext.Consumer>
-        {({isLoggedIn, setLoggedInState}) => !isLoggedIn ? <Link to="/login/" onClick={() => setLoggedInState(false)}>Login</Link> : <Redirect to="/domain" />}
+        {({isLoggedIn, setLoggedInState}) => !isLoggedIn ? <Link to="/login/" onClick={() => setLoggedInState()}>Login</Link> : <Redirect to="/domain" />}
         </LoggedInContext.Consumer>
         let logoutButton = <LoggedInContext.Consumer>
-        {({isLoggedIn, setLoggedInState}) => isLoggedIn ? <Link to="/logout/" onClick={() => setLoggedInState(false)}>Logout</Link> : <Redirect to="/" />}
+        {({isLoggedIn, setLoggedInState}) => isLoggedIn ? <Link to="/logout/" onClick={() => setLoggedInState()}>Logout</Link> : <Redirect to="/" />}
         </LoggedInContext.Consumer>
         let activeLogButton
+        let profileButton
         let isLoggedIn = this.context.isLoggedIn
         console.log(this.context)
         console.log(this.context.isLoggedIn)
@@ -31,7 +32,9 @@ export default class Header extends Component{
         }
         else {
             activeLogButton = logoutButton
-        
+            profileButton = <LoggedInContext.Consumer value={{test: "worked"}}>
+                {({email}) => <Link to="/profile">Profile</Link>}
+                </LoggedInContext.Consumer>
         }
         return(
             <header className="App-header">
@@ -39,6 +42,7 @@ export default class Header extends Component{
             <Link to="/domain/">API Testing</Link>
             
             {activeLogButton}
+            {profileButton}
             </header>
         );
     } 

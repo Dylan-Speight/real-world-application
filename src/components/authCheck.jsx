@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import cookie from 'react-cookies';
-
-export default function authCheck(ComponentToProtect) {
-  return class extends Component {
+import LoggedInContext from './user/userContext'
+export default function authCheck(ComponentToProtect, token) {
+  return class Auth extends Component {
     constructor() {
       super();
       this.state = {
         loading: true,
-        redirect: false,
-        token: cookie.load("token")
+        redirect: false
       };
+
     }
     componentDidMount() {
       fetch('http://localhost:4000/checkToken', {
         headers: {
-          Authorization: this.state.token}
+          Authorization: token}
         })
         .then(async res => {
           if (res.status === 200) {
@@ -46,3 +46,4 @@ export default function authCheck(ComponentToProtect) {
     }
   }
 }
+authCheck.contextType = LoggedInContext

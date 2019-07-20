@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import DomainController from './domainController'
 import GoogleMapsController from '../google_maps/googleMapsController'
 import cookie from 'react-cookies'
+import LoggedInContext from '../user/userContext'
 class DomainPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { loggedIn: cookie.load('loggedIn'),suburb: undefined,postcode: undefined, token: "", properties: [], data:[], maploaded: 0, results:0};
+        this.state = { loggedIn: false ,suburb: undefined,postcode: undefined, token: "", properties: [], data:[], maploaded: 0, results:0};
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     };
-
+    
+    componentDidMount() {
+        // this.setState({isLoggedIn: this.context.isLoggedIn}
+    }
     handleSubmit(event){
         const domainReturn = new DomainController(this.state)
         event.preventDefault();
@@ -48,6 +52,8 @@ class DomainPage extends Component {
     }
 
     render() {
+        this.context = this.context
+        console.log(this.context)
         let results = [];
         let googleMap;
         let noResults = <div className="noResults" key="noResults">Your search returned no results</div>;
@@ -93,5 +99,6 @@ class DomainPage extends Component {
         )
     }
 }
+DomainPage.contextType = LoggedInContext
 
 export default DomainPage
