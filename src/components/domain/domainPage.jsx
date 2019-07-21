@@ -3,6 +3,7 @@ import DomainController from './domainController'
 import GoogleMapsController from '../google_maps/googleMapsController'
 import cookie from 'react-cookies'
 import LoggedInContext from '../user/userContext'
+import saveUserInvestment from '../user/userInvestments'
 class DomainPage extends Component {
     constructor(props) {
         super(props);
@@ -11,9 +12,6 @@ class DomainPage extends Component {
         this.handleChange = this.handleChange.bind(this)
     };
     
-    componentDidMount() {
-        // this.setState({isLoggedIn: this.context.isLoggedIn}
-    }
     handleSubmit(event){
         const domainReturn = new DomainController(this.state)
         event.preventDefault();
@@ -48,7 +46,6 @@ class DomainPage extends Component {
     handleChange(event) {
         const { value, name } = event.target;
         this.setState({[name]:value})
-        ;
     }
 
     render() {
@@ -57,15 +54,29 @@ class DomainPage extends Component {
         let results = [];
         let googleMap;
         let noResults = <div className="noResults" key="noResults">Your search returned no results</div>;
-        let propertyResults = <div className="propertyResults" key="propertyResults">{this.state.properties.map(
-            (property, index) => <div className="propertyCard" key={index+1}><div className="propertyImageAddress"><div className="propertyImage">
-                <img src={property.listing.media[0].url}/></div><div className="propertyDetails">
-
-                       <div><h4>{property.listing.propertyDetails.displayableAddress}</h4><h4>Property Type:</h4>
-                    <p>{property.listing.propertyDetails.propertyType}</p></div>
-                    </div></div>
+        let propertyResults = 
+            <div className="propertyResults" key="propertyResults">
+                {this.state.properties.map((property, index) => 
+                    <div className="propertyCard" key={index+1}>
+                        <div className="propertyImageAddress">
+                            <div className="propertyImage">
+                               <img src={property.listing.media[0].url}/>
+                            </div>
+                            <div className="propertyDetails">
+                                <div>
+                                    <h4>{property.listing.propertyDetails.displayableAddress}</h4>
+                                    <h4>Property Type:</h4>
+                                    <p>{property.listing.propertyDetails.propertyType}</p>
+                                </div>
+                             </div>
+                        </div>
                     <div className="propertyPriceDetails">
-                    <h4>Price:</h4><p>{property.listing.priceDetails.displayPrice}</p></div></div>)}</div>
+                        <h4>Price:</h4>
+                        <p>{property.listing.priceDetails.displayPrice}</p>
+                    </div>
+                    <button onClick={() => saveUserInvestment()}/>
+                </div>)}
+            </div>
         const googleMapsController = new GoogleMapsController()
         if (this.state.maploaded === 2){
             googleMap = googleMapsController.mapsRender(this.state.properties);

@@ -17,6 +17,23 @@ export default function findUserInvestment(email) {
 
 }
 
+export function saveUserInvestment(email, investment) {
+    console.log(email)
+    console.log("INVEST")
+    fetch('http://localhost:4000/api/saveinvestment', {
+        method: 'POST',
+        
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: email
+
+        },
+        body: investment
+    }).then(async res => 
+        console.log(res))
+
+}
+
 // return <div> invest </div>
 
     //     // const response = await res.json()
