@@ -25,7 +25,7 @@ export default class Header extends Component{
         let profileButton
         let isLoggedIn = this.context.isLoggedIn
         console.log(this.context)
-        console.log(this.context.isLoggedIn)
+        // console.log(this.context.isLoggedIn)
         console.log(isLoggedIn)
         if (!isLoggedIn) {
             activeLogButton = loginButton

@@ -9,7 +9,8 @@ import cookie from 'react-cookies';
 import Logout from './user/userLogout'
 import Header from './header'
 import UserProfile from './user/userProfile'
-import LoggedInContext, { checkCookie } from './user/userContext'
+import LoggedInContext from './user/userContext'
+import checkCookie from './user/checkCookie'
 
 
 
@@ -21,9 +22,9 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount() {
-    this.setState(checkCookie())
-    console.log(this.state)
+  async componentDidMount() {
+      const response = await checkCookie()
+      this.setState(response)
   }
 
   setLoggedInState = ((value)  => { this.setState(value); console.log(this.state)})
