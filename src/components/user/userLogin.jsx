@@ -8,8 +8,8 @@ export default class UserLogin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: "test@test.com",
-            password: "password1234"
+            email: "",
+            password: ""
         }
         this.login = this.login.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -17,6 +17,7 @@ export default class UserLogin extends Component {
     
     handleChange(event) {
         const { value, name } = event.target;
+        console.log(this.state)
         this.setState({[name]:value})
     }
     onSubmit = (event) => {
@@ -25,8 +26,6 @@ export default class UserLogin extends Component {
             method: 'POST',
             body: JSON.stringify(
                 this.state
-            //     {email: "test@test.com",
-            // password: "password1234"}
             ),
             headers: {
               'Content-Type': 'application/json'

@@ -50,6 +50,7 @@ export class DomainController {
                         this.results.push(property)
                     }})
                     if (data.length === 0) {
+                        console.log(this.results)
                         return this.results
                     }
                     else {

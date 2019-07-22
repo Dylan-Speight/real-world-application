@@ -3,7 +3,8 @@ import DomainController from './domainController'
 import GoogleMapsController from '../google_maps/googleMapsController'
 import cookie from 'react-cookies'
 import LoggedInContext from '../user/userContext'
-import saveUserInvestment from '../user/userInvestments'
+import saveInvestment from '../investment/saveInvestment'
+
 class DomainPage extends Component {
     constructor(props) {
         super(props);
@@ -50,17 +51,17 @@ class DomainPage extends Component {
 
     render() {
         this.context = this.context
-        console.log(this.context)
-        let results = [];
-        let googleMap;
-        let noResults = <div className="noResults" key="noResults">Your search returned no results</div>;
+        // console.log(this.context)
+        let results = []
+        let googleMap
+        let noResults = <div className="noResults" key="noResults">Your search returned no results</div>
         let propertyResults = 
             <div className="propertyResults" key="propertyResults">
                 {this.state.properties.map((property, index) => 
                     <div className="propertyCard" key={index+1}>
                         <div className="propertyImageAddress">
                             <div className="propertyImage">
-                               <img src={property.listing.media[0].url}/>
+                               <img alt="" src={property.listing.media[0].url}/>
                             </div>
                             <div className="propertyDetails">
                                 <div>
@@ -70,12 +71,12 @@ class DomainPage extends Component {
                                 </div>
                              </div>
                         </div>
-                    <div className="propertyPriceDetails">
-                        <h4>Price:</h4>
-                        <p>{property.listing.priceDetails.displayPrice}</p>
-                    </div>
-                    <button onClick={() => saveUserInvestment()}/>
-                </div>)}
+                        <div className="propertyPriceDetails">
+                            <h4>Price:</h4>
+                            <p>{property.listing.priceDetails.displayPrice}</p>
+                        </div>
+                        <button onClick={() => saveInvestment(property, this.context.email)}/>
+                    </div>)}
             </div>
         const googleMapsController = new GoogleMapsController()
         if (this.state.maploaded === 2){
@@ -92,7 +93,7 @@ class DomainPage extends Component {
         if (this.state.results === 2) {
             results = [googleMap, propertyResults]
         }
-
+        console.log(saveInvestment)
         return(
             <div>
                 <div className='domainForm'>
@@ -104,7 +105,9 @@ class DomainPage extends Component {
                         <input type="submit" value="Submit"/>
                     </form>
                 </div>
-                <div className="resultsContainer" >{results.map(item => item)}
+
+                <div className="resultsContainer">
+                {results.map(item => item)}
                 </div>                
             </div>
         )
