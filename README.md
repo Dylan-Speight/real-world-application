@@ -33,7 +33,7 @@
 * Wireframes
 
 * Database ERD
-
+![picture](/public/RealEstateERD.png)
 * Data Flow Diagram
 * OO design documentation
   
