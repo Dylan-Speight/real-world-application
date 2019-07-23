@@ -8,9 +8,13 @@ export class DomainController {
         this.markers = []
         this.pageEnd = false;
         this.data = {"locations": [
-              {"suburb": props.suburb, "state": props.state,
-                "postCode": props.postcode}
-            ], "page": 1,"pageSize": 99 }  
+              {"suburb": props.suburb,
+                "postCode": props.postcode,
+            "state" : "QLD",
+            "includeSurroundingSuburbs":false
+        }
+            ], "page": 1,"pageSize": 99, "sort": {"sortKey": "Price"}}
+        this.rent = []  
         this.propertiesToRemove = ['advertiser', 'hasFloorplan', 'hasVideo', 'headline', 'inspectionSchedule', 'labels', 'listingSlug', 'summaryDescription']
    }
 
@@ -22,7 +26,6 @@ export class DomainController {
             grant_type: 'client_credentials',
             scope: 'api_listings_read'
         })
-        
         return axios.post('https://auth.domain.com.au/v1/connect/token', data, {
             headers: {
                 'Authorization': `Basic ${base64(`${clientId}:${secret}`)}`,
@@ -31,7 +34,7 @@ export class DomainController {
         }).then((result) => {
                     this.token= result.data.access_token 
                     return (this.token)             
-        }).catch(err => console.error(err.response.data))
+        }).catch(err => console.error(err))
     }
     
     getListingById(props) {
@@ -43,21 +46,24 @@ export class DomainController {
             .then(result => {
                 const { data } = result;
                 data.map((property) => { 
-                     if ((property.type === "PropertyListing") && (property.listing.hasOwnProperty("media")) && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
+                    if ((property.type === "PropertyListing") && (property.listing.hasOwnProperty("media")) && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
                         this.propertiesToRemove.map(currentProperty => {                             
                             if (property.listing.hasOwnProperty(currentProperty)) {
                             delete property.listing[currentProperty]
                         }})
-
                         this.results.push(property)
-                    }})
-                    if (data.length === 0) {
-                        return this.results
                     }
-                    else {
-                        this.data.page += 1
-                        return (this.getListingById(this.results))  
+                    if (property.listing.listingType === "Rent"){
+                        this.rent.push(property.listing.priceDetails.displayPrice)
                     }
+                })
+                if (data.length === 0) {
+                    return [this.results, this.rent]
+                }
+                else {
+                    this.data.page += 1
+                    return (this.getListingById(this.results, this.rent))  
+                }
             }).catch(err => console.error(err.data))
      }
 }
