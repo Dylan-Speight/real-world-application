@@ -1,6 +1,6 @@
 import React,{ Component } from 'react'
 import LoggedInContext from './userContext'
-const uri = "https://magnanimous-goat-5432.herokuapp.com/";
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 
 
 export default function findUserInvestment(email) {

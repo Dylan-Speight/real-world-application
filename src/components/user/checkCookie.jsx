@@ -1,6 +1,6 @@
 import cookie from 'react-cookies'
 
-const uri = "https://magnanimous-goat-5432.herokuapp.com/";
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 
 export default function checkCookie() {
     if ((cookie.load('isLoggedIn') === "true" )  && (cookie.load('token') !== "") && (cookie.load('email') !== "")){

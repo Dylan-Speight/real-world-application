@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import cookie from 'react-cookies';
 import LoggedInContext from './user/userContext'
 
-const uri = "https://magnanimous-goat-5432.herokuapp.com/";
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 
 export default function authCheck(ComponentToProtect, token) {
   return class Auth extends Component {
