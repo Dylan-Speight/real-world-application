@@ -3,6 +3,8 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 var jwtDecode = require('jwt-decode');
 
+const uri = "mongodb+srv://realworld:realworld@cluster0-fhhab.mongodb.net/usersdb?retryWrites=true&w=majority";
+
 
 export default class UserRegister extends Component {
     constructor(props) {
@@ -27,7 +29,7 @@ export default class UserRegister extends Component {
         
         event.preventDefault();
         console.log(JSON.stringify(this.state))
-        fetch('http://localhost:4000/api/register', {
+        fetch(`${uri}/api/register`, {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {

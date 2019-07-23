@@ -1,10 +1,12 @@
 import React,{ Component } from 'react'
 import LoggedInContext from './userContext'
+const uri = "mongodb+srv://realworld:realworld@cluster0-fhhab.mongodb.net/usersdb?retryWrites=true&w=majority";
+
 
 export default function findUserInvestment(email) {
     console.log(email)
     console.log("INVEST")
-    fetch('http://localhost:4000/api/findinvestment', {
+    fetch(`${uri}/api/findinvestment`, {
         method: 'POST',
         
         headers: {
@@ -20,7 +22,7 @@ export default function findUserInvestment(email) {
 export function saveUserInvestment(email, investment) {
     console.log(email)
     console.log("INVEST")
-    fetch('http://localhost:4000/api/saveinvestment', {
+    fetch(`${uri}/api/saveinvestment`, {
         method: 'POST',
         
         headers: {

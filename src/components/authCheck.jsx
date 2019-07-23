@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import cookie from 'react-cookies';
 import LoggedInContext from './user/userContext'
+
+const uri = "mongodb+srv://realworld:realworld@cluster0-fhhab.mongodb.net/usersdb?retryWrites=true&w=majority";
+
 export default function authCheck(ComponentToProtect, token) {
   return class Auth extends Component {
     constructor() {
@@ -13,7 +16,7 @@ export default function authCheck(ComponentToProtect, token) {
 
     }
     componentDidMount() {
-      fetch('http://localhost:4000/checkToken', {
+      fetch(`${uri}/checkToken`, {
         headers: {
           Authorization: token}
         })

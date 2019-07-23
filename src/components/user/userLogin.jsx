@@ -3,6 +3,8 @@ import LoggedInContext  from './userContext'
 import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
 
+const uri = "mongodb+srv://realworld:realworld@cluster0-fhhab.mongodb.net/usersdb?retryWrites=true&w=majority";
+
 
 export default class UserLogin extends Component {
     constructor(props) {
@@ -22,7 +24,7 @@ export default class UserLogin extends Component {
     }
     onSubmit = (event) => {
         event.preventDefault();
-        fetch('http://localhost:4000/api/authenticate', {
+        fetch(`${uri}/api/authenticate`, {
             method: 'POST',
             body: JSON.stringify(
                 this.state
