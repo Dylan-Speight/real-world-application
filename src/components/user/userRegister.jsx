@@ -31,7 +31,6 @@ export default class UserRegister extends Component {
         console.log(JSON.stringify(this.state))
         fetch(`${uri}/api/register`, {
             method: 'POST',
-            mode: 'no-cors',
             body: JSON.stringify(this.state),
             headers: {
               'Content-Type': 'application/json'
