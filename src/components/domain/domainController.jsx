@@ -9,8 +9,12 @@ export class DomainController {
         this.pageEnd = false;
         this.data = {"locations": [
               {"suburb": props.suburb,
-                "postCode": props.postcode}
-            ], "page": 1,"pageSize": 99, "listingType": "Sale", "sort": {"sortKey": "Price"}}  
+                "postCode": props.postcode,
+            "state" : "QLD",
+            "includeSurroundingSuburbs":false
+        }
+            ], "page": 1,"pageSize": 99, "sort": {"sortKey": "Price"}}
+        this.rent = []  
         this.propertiesToRemove = ['advertiser', 'hasFloorplan', 'hasVideo', 'headline', 'inspectionSchedule', 'labels', 'listingSlug', 'summaryDescription']
    }
 
@@ -42,21 +46,24 @@ export class DomainController {
             .then(result => {
                 const { data } = result;
                 data.map((property) => { 
-                     if ((property.type === "PropertyListing") && (property.listing.hasOwnProperty("media")) && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
+                    if ((property.type === "PropertyListing") && (property.listing.hasOwnProperty("media")) && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
                         this.propertiesToRemove.map(currentProperty => {                             
                             if (property.listing.hasOwnProperty(currentProperty)) {
                             delete property.listing[currentProperty]
                         }})
                         this.results.push(property)
-                    }})
-                    if (data.length === 0) {
-                        console.log(this.results)
-                        return this.results
                     }
-                    else {
-                        this.data.page += 1
-                        return (this.getListingById(this.results))  
+                    if (property.listing.listingType === "Rent"){
+                        this.rent.push(property.listing.priceDetails.displayPrice)
                     }
+                })
+                if (data.length === 0) {
+                    return [this.results, this.rent]
+                }
+                else {
+                    this.data.page += 1
+                    return (this.getListingById(this.results, this.rent))  
+                }
             }).catch(err => console.error(err.data))
      }
 }
