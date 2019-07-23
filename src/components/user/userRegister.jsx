@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 var jwtDecode = require('jwt-decode');
 
-const uri = "mongodb+srv://realworld:realworld@cluster0-fhhab.mongodb.net/usersdb?retryWrites=true&w=majority";
+const uri = "https://magnanimous-goat-5432.herokuapp.com/";
 
 
 export default class UserRegister extends Component {

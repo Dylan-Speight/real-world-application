@@ -3,7 +3,7 @@ import LoggedInContext  from './userContext'
 import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
 
-const uri = "mongodb+srv://realworld:realworld@cluster0-fhhab.mongodb.net/usersdb?retryWrites=true&w=majority";
+const uri = "https://magnanimous-goat-5432.herokuapp.com/";
 
 
 export default class UserLogin extends Component {
