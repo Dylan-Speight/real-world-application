@@ -1,20 +1,9 @@
-import React, {Component} from 'react'
-import axios from 'axios'
-import { Redirect } from 'react-router-dom'
-var jwtDecode = require('jwt-decode');
-
-
 export default function saveInvestment(property, email) {       
-    console.log(property) 
-    console.log(email) 
-
     const formattedData = {
         price: {
-            income: "INCOME",
-            expenses: "EXPENSES",
-            value: "VALUE",
-            rio: "ROI",
-            displayPrice: property.listing.priceDetails.displayPrice
+            displayPrice: property.listing.priceDetails.displayPrice,
+            estimatedProfit: property.listing.priceDetails.estimatedProfit,
+            monthlyRepayments: property.listing.priceDetails.monthlyRepayments
             },
             address: {
                 displayableAddress: property.listing.propertyDetails.displayableAddress,

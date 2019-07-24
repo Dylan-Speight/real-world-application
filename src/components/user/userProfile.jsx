@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LoggedInContext from './userContext'
 import findInvestment from '../investment/findInvestment'
-
+import removeInvestment from '../investment/removeInvestment'
 
 export default class UserProfile extends Component {
     constructor(props){
@@ -22,24 +22,34 @@ export default class UserProfile extends Component {
         let results =[]
         let investmentResults = 
         <div className="investmentResults">
-            {this.state.investments.map(investment => 
-                <div className="investmentCard">
-                    <div className="investmentImageAddress">
-                        <div className="investmentImage">
-                            <img alt="" src={investment.media[0].url}/>
-                        </div>
-                        <div className="investmentDetails">
-                            <div>
-                                <h4>{investment.address.displayableAddress}</h4>
-                                <h4>Property Type:</h4>
-                                <p>{investment.description}</p>
-                            </div>
-                        </div>
+            {this.state.investments.map((investment, index) => 
+                <div className="propertyCard" key={index+1}>
+                <div className="propertyImageAddress">
+                    <div className="propertyImage">
+                        {investment.media.map((media, index) => {
+                            return (
+                                <img alt="" src={media.url}/>
+                            )
+                        }
+                            )}
                     </div>
-                <div className="investmentPriceDetails">
-                    <h4>Price:</h4>
-                    <p>{investment.price.displayPrice}</p>
+                    <div className="propertyDetails">
+                        <div>
+                            <h4>{investment.address.displayableAddress}</h4>
+                        </div>
+                     </div>
                 </div>
+
+                <div className="propertyPriceDetails">
+                    <h4>Sale price:</h4>
+                    <p>{investment.price.displayPrice}</p>
+                    <h4>Average monthly costs:</h4>
+                    <p>{investment.price.monthlyRepayments}</p>
+                    <h4>Assumed monthly profit:</h4>
+                    <p>{investment.price.estimatedProfit}</p>
+                    <p></p>
+                </div>
+                {/* <button onClick={() => removeInvestment(investment.propertyid)}/> */}
             </div>)}
         </div>
         if (this.state.investmentsLoaded) {
