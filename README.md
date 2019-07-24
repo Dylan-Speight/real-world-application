@@ -1,8 +1,10 @@
 # Real World Application Project
 
-~~Deployed Link to be published~~
+[Deployed Application Link](https://realifystatedly.netlify.com)
 
-[Github Repo Link](https://github.com/Dylan-Speight/real-world-application)
+[Front End Github Repo Link](https://github.com/Dylan-Speight/real-world-application)
+
+[Back End Github Repo Link](https://github.com/Dylan-Speight/real-world-application-backend)
 
 ## Table of Contents
 
@@ -31,23 +33,43 @@
 
 ## Description of project
 
-(Throw in a table of contents after)
-
 ### Problem definition/ purpose
 
- The purpose of this application is to assist a user in making the best possible real estate investments. This app will allow the user to see various statistics about the property they are interested in investing in and allow them to make more educated decisions about whether or not it would be worth their time/money.
+ After discussing with the client we have been tasked with creating a real estate application. The purpose of this application is to assist a user in making the best possible real estate investments based on the properties expected return on investment. By taking the information given by the Domain api we are able to create a calculator to assist in allowing the user to make the best possible investment choices. This app will allow the user to see various statistics about the property they are interested in investing in. Users will be able to save and keep track of any properties that they are thinking about investing in making it easier to track changes in the real estate market effecting the expenses or rental prices etc.
   
 ### Functionality / features
 
- Users are able to sign up to the app and log into their account to give them their own personal profile to search through properties that they may be interested in based on the state/postcode/suburb/street or even as specific as the house number in question. Once they have found a proprty or properties that they are interested in they are able store the investments that they have made or are interested in for future perusal.
+ Users are able to sign up to the app and log into their account giving them their own personal profile to search through properties that they may be interested in. Users will be able to search and filter their results based on the state, postcode, suburb, street, house number price etc. If the user finds a investment property they are interested they are able to save it to their profile so that they can come back and quickly access the information relevant to their choices.
   
 ### Screenshots
   
 ### Tech stack (MERN)
 
-  Node.js   |   Express   |   React |   Mongodb   |   Mongoose
+_**|   Node.js    |**_
+  
+  Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. This allows the developer to run scripts server-side enabling a dynamic webpage. It also allows for javascript to be used in the backend so that javascript can be used frontend to backend.
+  
+_**|   Express    |**_
+  
+  Express is a web application framework for Node.js and is the de facto standard server framework for Node.js.
+  
+_**|   React    |**_
+
+React is a javascript library for building user interfaces. React is optimal for fetching rapidly changing data that needs to be recorded. Recently it has been made even more powerful by introducing hooks in 16.8.0 allowing for its own inbuilt state management allowing for easier state management without redux.
+    
+_**|   Mongodb    |**_
+
+MongoDB is a cross-platform document-oriented database program. It is a non relational database that allows for data to be stored and recieved without the data being modeled outside the tabular relations used in relational databases. Data is conceptualized as an object this allows the database to be a lot more intuitive to work with since 'everything is an object' it also allows for a lot more flexibility in its design  as we are not bound to columns and rows.
+    
+_**|   Mongoose    |**_
+
+Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
 
 #### Instructions on how to setup, configure, deploy and use the app
+
+Clone the repos posted at the beginning of this README 
+
+Note: If you would like to make changes please fork the repo as well
 
 ## Design documentation
 
@@ -112,7 +134,7 @@ Security is a very important issue on software development, especially for web o
 
 _**Functionality and Correctness**_
 
-Functionality (or correctness) is the conformity of the software with actual requirements and specifications. In fact this is the precendition attribute of an application, and maybe not a quality factor but we wanted to point that as the last quality factor, for taking attention: Quality factors are not meaningful when we are talking about unfunctional software. First, perform desired functionality and produce correct software, then apply quality factors on it. If you can perform both paralelly, it is the best.
+Functionality (or correctness) is the conformity of the software with actual requirements and specifications. In fact this is the precendition attribute of an application, and maybe not a quality factor but we wanted to point that as the last quality factor, for taking attention: Quality factors are not meaningful when we are talking about unfunctional software. First, perform desired functionality and produce correct software, then apply quality factors on it. If you can perform both in paralel, it is the best.
 
 ### What libraries are being used in the app and why?
 
@@ -127,8 +149,6 @@ _**Node.js**_
 _**Mongoose**_
 
 _**Material UI**_
-
-
 
 ### A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
 
