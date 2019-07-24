@@ -17,7 +17,6 @@ export default class UserLogin extends Component {
     
     handleChange(event) {
         const { value, name } = event.target;
-        console.log(this.state)
         this.setState({[name]:value})
     }
     onSubmit = (event) => {
@@ -66,13 +65,14 @@ export default class UserLogin extends Component {
                     placeholder="Email"
                     value={this.state.email} 
                     onChange={this.handleChange}
-                    // required
+                    required
                     ></input>
                     <input name="password" 
-                    placeholder="Password" 
+                    placeholder="Password"
+                    type="password"
                     value={this.state.password}
                     onChange={this.handleChange}
-                    // required
+                    required
                     ></input>
                     <input type="submit" value="Login"/>
                 </form>

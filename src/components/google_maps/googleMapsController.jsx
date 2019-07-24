@@ -10,7 +10,7 @@ export default class GoogleMapsController {
                     bootstrapURLKeys={{ key:process.env.REACT_APP_MAPS_APIKEY }}
                     yesIWantToUseGoogleMapApiInternals
                     center={{lat: properties[0].listing.propertyDetails.latitude, lng:properties[0].listing.propertyDetails.longitude}}
-                    zoom={12}
+                    zoom={13}
                     onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps, properties)}
                 >
                 </GoogleMapReact></div>)
