@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 var jwtDecode = require('jwt-decode');
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 
 
 export default class UserRegister extends Component {
@@ -27,7 +28,7 @@ export default class UserRegister extends Component {
         
         event.preventDefault();
         console.log(JSON.stringify(this.state))
-        fetch('http://localhost:4000/api/register', {
+        fetch(`${uri}/api/register`, {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {

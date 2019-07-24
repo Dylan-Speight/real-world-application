@@ -1,3 +1,5 @@
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
+
 export default function saveInvestment(property, email) {       
     const formattedData = {
         price: {
@@ -18,7 +20,7 @@ export default function saveInvestment(property, email) {
             propertyid: property.listing.id,
             userid: email
     }
-    fetch('http://localhost:4000/api/saveinvestment', {
+    fetch('${uri}/api/saveinvestment', {
         method: 'POST',
         body: JSON.stringify(formattedData),
         headers: {

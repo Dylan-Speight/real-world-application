@@ -1,10 +1,11 @@
 import React,{ Component } from 'react'
 import LoggedInContext from './userContext'
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 
 export default function findUserInvestment(email) {
     console.log(email)
     console.log("INVEST")
-    fetch('http://localhost:4000/api/findinvestment', {
+    fetch(`${uri}/api/findinvestment`, {
         method: 'POST',
         
         headers: {
@@ -20,7 +21,7 @@ export default function findUserInvestment(email) {
 export function saveUserInvestment(email, investment) {
     console.log(email)
     console.log("INVEST")
-    fetch('http://localhost:4000/api/saveinvestment', {
+    fetch(`${uri}/api/saveinvestment`, {
         method: 'POST',
         
         headers: {

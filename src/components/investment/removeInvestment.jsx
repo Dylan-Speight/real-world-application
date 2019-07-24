@@ -1,6 +1,8 @@
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
+
 export default function removeInvestment(investment) {       
 
-    fetch('http://localhost:4000/api/removeinvestment', {
+    fetch(`${uri}/api/removeinvestment`, {
         method: 'POST',
         body: JSON.stringify({propertyid : investment}),
         headers: {

@@ -1,8 +1,9 @@
 import React,{ Component } from 'react'
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 
 export default function findUserInvestment(email) {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:4000/api/findinvestment', {
+        fetch(`${uri}/api/findinvestment`, {
             method: "POST",
             headers: {
                 Authorization: email 

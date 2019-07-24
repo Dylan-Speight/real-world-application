@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import cookie from 'react-cookies';
 import LoggedInContext from './user/userContext'
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
+
 export default function authCheck(ComponentToProtect, token) {
   return class Auth extends Component {
     constructor() {
@@ -13,7 +15,7 @@ export default function authCheck(ComponentToProtect, token) {
 
     }
     componentDidMount() {
-      fetch('http://localhost:4000/checkToken', {
+      fetch(`${uri}/checkToken`, {
         headers: {
           Authorization: token}
         })
