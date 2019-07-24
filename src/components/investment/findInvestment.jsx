@@ -1,5 +1,3 @@
-import React,{ Component } from 'react'
-
 export default function findUserInvestment(email) {
     return new Promise((resolve, reject) => {
         fetch('http://localhost:4000/api/findinvestment', {

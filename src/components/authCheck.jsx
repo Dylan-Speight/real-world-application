@@ -13,6 +13,10 @@ export default function authCheck(ComponentToProtect, token) {
 
     }
     componentDidMount() {
+      if (!token){
+        token = cookie.load('token')
+
+      }
       fetch('http://localhost:4000/checkToken', {
         headers: {
           Authorization: token}
@@ -35,7 +39,6 @@ export default function authCheck(ComponentToProtect, token) {
         return null;
       }
       if (redirect) {
-        console.log("redirected")
         return <Redirect to="/login" />;
       }
       return (

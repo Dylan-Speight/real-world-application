@@ -1,17 +1,19 @@
 import React, {Component} from 'react'
 import LoggedInContext  from './userContext'
 import cookie from 'react-cookies';
-import { Link } from 'react-router-dom';
-
+import { Container, Field, Label, Control, Input, Help, Button} from 'bloomer'
 
 export default class UserLogin extends Component {
     constructor(props) {
         super(props)
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            incorrect: false,
+            passwordField: null,
+            emailField: null,
+            loginRes: ""
         }
-        this.login = this.login.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
     
@@ -19,18 +21,20 @@ export default class UserLogin extends Component {
         const { value, name } = event.target;
         this.setState({[name]:value})
     }
+
     onSubmit = (event) => {
+        this.setState({passwordField: null, emailField: null, incorrect: null, loginRes: null})
+        const { email, password } = this.state
         event.preventDefault();
         fetch('http://localhost:4000/api/authenticate', {
             method: 'POST',
             body: JSON.stringify(
-                this.state
+                {email, password}
             ),
             headers: {
               'Content-Type': 'application/json'
             }
         }).then(async res => {
-            console.log(this.state)
             const response = await res.json()
             cookie.save("token", await response.token, {path: "/"})
             if (res.status === 200) {
@@ -38,10 +42,26 @@ export default class UserLogin extends Component {
                 cookie.save("email", `${this.state.email}`, {path: "/"})
                 this.context.setLoggedInState({isLoggedIn: true, email: this.state.email, token: response.token})
                 this.props.history.push('/domain');
-            } else {
-                const error = new Error(res.error)    ;
+            } 
+            else {
+                if (res.status === 401) {
+                    if (response.error.password) {
+                        this.setState({passwordField: 'danger'})
+                        this.setState({incorrect: 'password'});
+                        this.setState({loginRes: response.error.password});
+
+                    }
+                    if (response.error.email) {
+                        this.setState({emailField: 'danger'})
+                        this.setState({incorrect: 'email'});
+                        this.setState({loginRes: response.error.email});
+                    }
+                } else {
+                const error = new Error(res.error);
                 throw error;
+                }
             }
+            console.log(this.state)
         })
         .catch(err => {
             console.error(err);
@@ -49,36 +69,47 @@ export default class UserLogin extends Component {
         });    
     }
     
-    login (event) {        
-        alert("Logged" + this.state.email + this.state.password )
-    }
+  
     render(){
         this.context = this.context
-        return(
-            <div>
-                <p> Don't have an account?</p>
-                <Link to="/register">Sign Up</Link>
-                <div>
-                <form onSubmit={ this.onSubmit }>
-                <input 
-                    name="email" 
-                    placeholder="Email"
-                    value={this.state.email} 
-                    onChange={this.handleChange}
-                    required
-                    ></input>
-                    <input name="password" 
-                    placeholder="Password"
-                    type="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                    required
-                    ></input>
-                    <input type="submit" value="Login"/>
-                </form>
+        let invalidCredentials = {
+            email: null, password: null}
+        
+        if (this.state.incorrect === 'email') {
+            invalidCredentials.email = <Help isColor='danger'>{this.state.loginRes}</Help>
 
-                </div>
-            </div>
+        }
+
+        if (this.state.incorrect === 'password') {
+            invalidCredentials.password = <Help isColor='danger'>{this.state.loginRes}</Help>
+        }
+
+    
+        return(
+            <Container className='customForm'>
+                <Field> 
+                    <Label>Email</Label>
+                    <Control>
+                        <Input isColor={this.state.emailField} type="email" name="email" placeholder="Email" onChange={this.handleChange} required/>
+                    </Control>
+                </Field>
+                {invalidCredentials.email}
+                <Field> 
+                    <Label>Password</Label>
+                    <Control>
+                        <Input isColor={this.state.passwordField} type="password" name='password' placeholder="Password" onChange={this.handleChange} required/>
+                    </Control>
+                { invalidCredentials.password}
+                </Field>
+                <Field>
+                    <Control>
+                        <Button onClick={this.onSubmit} isColor='primary'>
+                            Login
+                        </Button>
+                    </Control>
+                </Field>
+            </Container>
+
         )
     }
 }

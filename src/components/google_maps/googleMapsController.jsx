@@ -1,19 +1,26 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
+import { Column, Content } from 'bloomer';
 
 export default class GoogleMapsController {
     mapsRender(properties) {
         if (properties.length !== 0){
             return (
-                <div className="googleMap" key="googleMap">
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key:process.env.REACT_APP_MAPS_APIKEY }}
-                    yesIWantToUseGoogleMapApiInternals
-                    center={{lat: properties[0].listing.propertyDetails.latitude, lng:properties[0].listing.propertyDetails.longitude}}
-                    zoom={13}
-                    onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps, properties)}
-                >
-                </GoogleMapReact></div>)
+                <Column className="mapsWrapper">
+                    <Content className="googleMap" key="googleMap">
+                        <GoogleMapReact
+                            bootstrapURLKeys={{ key:process.env.REACT_APP_MAPS_APIKEY }}
+                            yesIWantToUseGoogleMapApiInternals
+                            center={{
+                                lat: properties[0].listing.propertyDetails.latitude, 
+                                lng:properties[0].listing.propertyDetails.longitude
+                            }}
+                            zoom={12}
+                            onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps, properties)}
+                        >
+                        </GoogleMapReact>
+                    </Content>
+                </Column>)
         }
     }
     

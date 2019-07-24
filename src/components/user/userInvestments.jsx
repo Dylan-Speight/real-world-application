@@ -1,6 +1,3 @@
-import React,{ Component } from 'react'
-import LoggedInContext from './userContext'
-
 export default function findUserInvestment(email) {
     console.log(email)
     console.log("INVEST")
@@ -18,8 +15,6 @@ export default function findUserInvestment(email) {
 }
 
 export function saveUserInvestment(email, investment) {
-    console.log(email)
-    console.log("INVEST")
     fetch('http://localhost:4000/api/saveinvestment', {
         method: 'POST',
         

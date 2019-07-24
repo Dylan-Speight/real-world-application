@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import { Redirect } from 'react-router-dom'
-var jwtDecode = require('jwt-decode');
-
+import { Container, Field, Label, Control, Input, Icon, Help, Button} from 'bloomer'
 
 export default class UserRegister extends Component {
     constructor(props) {
@@ -17,16 +15,12 @@ export default class UserRegister extends Component {
     }
     
     handleChange(event) {
-        console.log(event.target.value)
         const { value, name } = event.target;
         this.setState({[name]:value})
-        console.log(this.state)
-        
     }
     onSubmit = (event) => {
         
         event.preventDefault();
-        console.log(JSON.stringify(this.state))
         fetch('http://localhost:4000/api/register', {
             method: 'POST',
             body: JSON.stringify(this.state),
@@ -38,37 +32,41 @@ export default class UserRegister extends Component {
             if (res.status === 200) {
               this.setState({isRegistering: false})
             } else {
-               const error = res.json().then(response => {
-                console.log(response.error)
-            }).then( () => {throw error})
+               const error = res.json();
+              throw error;
             }
           })
           .catch(err => {
-            alert('Error logging in please try again');
+            alert('Error creating account try again');
           });    
         }
 
     render(){
       if (this.state.isRegistering){
         return(
-            <div>
-                <div>
-                <form onSubmit={this.onSubmit}>
-                    <input 
-                    name="email" 
-                    placeholder="Email"
-                    value={this.state.email} 
-                    onChange={this.handleChange}
-                    required></input>
-                    <input name="password" 
-                    placeholder="Password" 
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                    required></input>
-                    <input type="submit" value="Register"/>
-                </form>
-                </div>
-            </div>
+          <Container>
+          <Field> 
+              <Label>Email</Label>
+              <Control>
+                  <Input type="email" name="email" placeholder="Email" onChange={this.handleChange} required/>
+              </Control>
+              </Field>
+
+              <Field> 
+              <Label>Password</Label>
+              <Control>
+                  <Input type="password" name='password' placeholder="Password" onChange={this.handleChange} required/>
+                  </Control>
+          </Field>
+          <Field>
+              <Control>
+                  <Button onClick={this.onSubmit} isColor='primary'>
+                      Create Account
+                  </Button>
+              </Control>
+          </Field>
+      </Container>
+
         )
       }
       return (<Redirect to={'/login'} />)
