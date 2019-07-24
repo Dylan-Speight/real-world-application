@@ -22,7 +22,7 @@
     - [User stories](#User-stories)
     - [Workflow diagram of the user journey/s.](#Workflow-diagram-of-the-user-journeys)
     - [Database ERD](#Database-ERD)
-  - [Data Flow Diagram](#Data-Flow-Diagram)
+    - [Data Flow Diagram](#Data-Flow-Diagram)
     - [Details of project Management and Planning process](#Details-of-project-Management-and-Planning-process)
       - [Screenshots of trello boards](#Screenshots-of-trello-boards)
     - [Screenshots of app in progress](#Screenshots-of-app-in-progress)
@@ -71,8 +71,6 @@ Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It ma
 
 ### Instructions on how to setup, configure, deploy and use the app
 
-Clone the repos posted at the beginning of this README 
-
 Note: If you would like to make changes please fork the repo as well
 
 ## Design documentation
@@ -111,7 +109,7 @@ Note: If you would like to make changes please fork the repo as well
 
  ![picture](/public/RealEstateERD.png)
 
-## Data Flow Diagram
+### Data Flow Diagram
 
 ![picture](/public/DataFlowDiagram.png)
 
@@ -139,7 +137,7 @@ Note: If you would like to make changes please fork the repo as well
 
 _**Flexibility and Extensibility**_
 
-Flexibility is the ability of software to add/modify/remove functionality without damaging the current system. Extensibility is the ability of software to add functionality without damaging system, so it may be thought of as a subset of flexibility. Those functionality changes may occur according to changing requirements, or an obligation if the development process is one of the iterative methods. Change is inevitable in software development and so, this is one of the most important properties of quality software
+Flexibility is the ability of software to add/modify/remove functionality without damaging the current system. Extensibility is the ability to extend software and add functionality without damaging system, so it may be thought of as a subset of flexibility. These changes in the software may occur if requirements of the software change or if new or improved features come in for the original software. Software is always changing so it is important to be able to adapt and change along with it.
 
 _**Maintainability and Readability**_
 
@@ -147,27 +145,15 @@ Maintainability is a little similar with flexibility but it focuses on modificat
 
 _**Performance and Efficiency**_
 
-Performance is mostly about the response time of the software. This response time should be in acceptable intervals (e.g. max. a few seconds), and should not increase if transaction count increases. And also, resources are expensive. Efficiency must be supported with resource utilization. As an exaggerated example, the ability to perform a simple function only by using a 32 processor machine or 1 TB disk space is not acceptable. Optimal source/performance ratio must be aimed.
+Performance is mostly about optimizing your software to improve response times in your software and efficiency is more about lowering resource cost. For example improving performance will shorten response times to an acceptable level and keep them at those levels even if transaction count increases. On the other hand getting instant responses by increasing resource use will improve the performance but will increase costs due to more resources being used. This is where the efficiency of the software comes in, finding the ideal resources/ performance ratio is important and should be aimed for.
 
 _**Usability and Accessability**_
 
-User interfaces are the only visible parts of software according to the viewpoint of user. So, simplicity, taking less time to complete a job, fast learnability etc. are very important in this case. The most well known principle for this property is KISS (Keep It Simple Stupid). Simple is always the best. A usable software should also support different accessibility types of control for people with disabilities.
+User interfaces are the only visible parts of software according to the viewpoint of user. So, simplicity, taking less time to complete a job, the ability to easily navigate, simplicity in design etc. are very important in this case. Keeping the software simple and not trying to throw too much at the user at once will help to create an enjoyable and worthwhile experience for the user. Simple is always the best. A usable software should also support different accessibility types of control for people with disabilities. These may range from the colour scheme to making sure that the sites layout allows for efficient tab navigating.
 
-_**Platform Compatibility and Portability**_
+_**Functionality**_
 
-A quality software should run on as much various platforms as it can. So, more people can make use of it. In different contexts we may mention different platforms, this may be OS platforms, browser types etc. And portability is about adapting software that can run on different platforms, for being more platform compatible. In this sense, portability is also related with flexibility
-
-_**Testability and Manageability**_
-
-Quality software requires quality testing. Source code should be tested with the most coverage and with the most efficient testing methods. This can be performed by using encapsulation, interfaces, patterns, low coupling etc. techniques correctly. Besides testability, a qualified software should be manageable after deployment. It may be monitored for e.g. performance or data usage status, or may enable developer to configure system easily. Creating a successful logging system is another very important issue about managability.
-
-_**Security**_
-
-Security is a very important issue on software development, especially for web or mobile based ones which may have millions of users with the ability of remote accessing to system. You should construct a security policy and apply it correctly by leaving no entry points. This may include authorization and authentication techniques, network attack protections, data encryption and so on. all possible types of security leaks should be considered, otherwise one day only one attack may crash your whole applicaion and whole company.
-
-_**Functionality and Correctness**_
-
-Functionality (or correctness) is the conformity of the software with actual requirements and specifications. In fact this is the precendition attribute of an application, and maybe not a quality factor but we wanted to point that as the last quality factor, for taking attention: Quality factors are not meaningful when we are talking about unfunctional software. First, perform desired functionality and produce correct software, then apply quality factors on it. If you can perform both in parallel, it is the best.
+Functionality is the conformity of the software with actual requirements and specifications. If the software is unable to perform its intended purpose efficiently, in the best possible way then there is definitely room to be improved on. Also important is that it does not contain bugs or other issues that may impede the softwares ability to achieve its end goal for the user.
 
 ### What libraries are being used in the app and why?
 
@@ -185,12 +171,26 @@ _**Material UI**_
 
 ### A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
 
-- Project management
-- Design
-- Technical skills
-- Knowledge of how a website is built
-- 
+The team should first have a strong knowledge of the tech stack they plan on using for the website an example of this is knowing mongodb, react, express and node.js if they are planning on making it with the MERN stack. Next is knowing how to put it all together in a way that will make the best use of their time. Being knowledgeable in how a website is constructed and having a solid understanding of any data flow or anything else that may not be immediately obvious in the project.
 
+Assuming the team has adequate technical skills to build the website they will also need to have some sort of project management ability. Whether it is done as a team or an assigned person leads this it is a necessary component to plan out how the team will be working towards their end goal. Going into a project without a goal or way to get to it are both just asking for failure.
+
+After these aspects the team will still need a strong sense of design too put all of these things together into a coherent website that is well set out and pleasant to use without needing some other knowledge of the website.
+
+Design plays a big part in the user experience but is not the only part that is important to it. The team will have to make sure that their website is also efficient and will give the user a great experience by reducing load times and making the site both accessible and usable.
+  
 ### Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
 
+Technical
+Design
+ux/ui
+project management
+organisation
+api
+backend
+frontend
+linking
+
 ### Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+
+yeah nah good
