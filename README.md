@@ -17,10 +17,14 @@
     - [Functionality / features](#Functionality--features)
     - [Screenshots](#Screenshots)
     - [Tech stack (MERN)](#Tech-stack-MERN)
-      - [Instructions on how to setup, configure, deploy and use the app](#Instructions-on-how-to-setup-configure-deploy-and-use-the-app)
+    - [Instructions on how to setup, configure, deploy and use the app](#Instructions-on-how-to-setup-configure-deploy-and-use-the-app)
   - [Design documentation](#Design-documentation)
+    - [User stories](#User-stories)
+    - [Workflow diagram of the user journey/s.](#Workflow-diagram-of-the-user-journeys)
     - [Database ERD](#Database-ERD)
+  - [Data Flow Diagram](#Data-Flow-Diagram)
     - [Details of project Management and Planning process](#Details-of-project-Management-and-Planning-process)
+      - [Screenshots of trello boards](#Screenshots-of-trello-boards)
     - [Screenshots of app in progress](#Screenshots-of-app-in-progress)
   - [Short answer questions](#Short-answer-questions)
     - [What are the most important aspects of quality software?](#What-are-the-most-important-aspects-of-quality-software)
@@ -65,7 +69,7 @@ _**|   Mongoose    |**_
 
 Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
 
-#### Instructions on how to setup, configure, deploy and use the app
+### Instructions on how to setup, configure, deploy and use the app
 
 Clone the repos posted at the beginning of this README 
 
@@ -74,22 +78,51 @@ Note: If you would like to make changes please fork the repo as well
 ## Design documentation
 
 - Design process
-- User stories
-- Workflow diagram of the user journey/s.
+  
+  _**In the beginning: Planning**_
+
+  With the introduction of a client the design process is different from previous projects built in this course. The design now has a lot more to do with regulating expectations in the finished app as we have only limited time and experience in building apps from scratch. The advantage to having a client is that the app begins with a goal that is to be achieved so the design of the app is more of an exercise in seeing how the end goal can be achieved.
+
+  _**Initialization**_
+
+  After talking with the client to begin with we went into the design of the database and the general structure of the app. After knowing what information it was that we were trying to get and where we were going to get it from we began our first short sprint modeling out the dataflow and initializing the back and front end and setting up the initial deployment.
+  
+  _**Getting to it**_
+
+  After we had the basics down we could look harder into how we were going to retrieve and pass data. We decided on user accounts to allow people to store their liked investment properties and the information we would request from the domain api. This gave us our database an outline and a direction for the front end to head in. Displaying a map from the google maps javascript api and linking it with the domain api to show markers on the map for location along with the cards that give a brief overview of the properties within the scope of the search terms and filters provided by the user.
+
+  _**Pretty and Functional**_
+
+  With the basics down we worked towards getting it looking nice and making sure that the functionality of the app was smooth and responsive. This is also where the user experience factored in a bit more as we wanted to make the app accessible to the user and not just something that would be dificult to navigate and find out what they were looking for. Putting together a user flow for the intended navigation of the site and the layout that would be most ideal to serve these purposes. Wireframes and diagrams were definitely an asset here in making sure that we had an idea of how everything will be layed out in the end.
+
+  Constant communication with the client assisted in our progress as they already had somewhat of an end goal in sight beforehand which made this particular part of the design progress much smoother as we could run everything by them.
+
+### User stories
+
+![picture](/public/userStories.png)
+
+### Workflow diagram of the user journey/s.
+
+![picture](/public/userFlow.jpeg)
+
 - Wireframes
 
 ### Database ERD
 
  ![picture](/public/RealEstateERD.png)
 
-- Data Flow Diagram
+## Data Flow Diagram
+
+![picture](/public/DataFlowDiagram.png)
+
 - OO design documentation
   
 ### Details of project Management and Planning process
 
 - Project plan and timeline
 - Client communications
-- Screenshots of trello boards
+
+#### Screenshots of trello boards
   
 ![picture](public/trello1.png)
 ![picture](public/trello2.png)
@@ -134,7 +167,7 @@ Security is a very important issue on software development, especially for web o
 
 _**Functionality and Correctness**_
 
-Functionality (or correctness) is the conformity of the software with actual requirements and specifications. In fact this is the precendition attribute of an application, and maybe not a quality factor but we wanted to point that as the last quality factor, for taking attention: Quality factors are not meaningful when we are talking about unfunctional software. First, perform desired functionality and produce correct software, then apply quality factors on it. If you can perform both in paralel, it is the best.
+Functionality (or correctness) is the conformity of the software with actual requirements and specifications. In fact this is the precendition attribute of an application, and maybe not a quality factor but we wanted to point that as the last quality factor, for taking attention: Quality factors are not meaningful when we are talking about unfunctional software. First, perform desired functionality and produce correct software, then apply quality factors on it. If you can perform both in parallel, it is the best.
 
 ### What libraries are being used in the app and why?
 
@@ -151,6 +184,12 @@ _**Mongoose**_
 _**Material UI**_
 
 ### A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
+
+- Project management
+- Design
+- Technical skills
+- Knowledge of how a website is built
+- 
 
 ### Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
 
