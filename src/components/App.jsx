@@ -28,12 +28,19 @@ export default class App extends Component {
   async componentDidMount() {
       const response = await checkCookie()
       this.setState(response)
+      
+      
   }
 
   setLoggedInState = ((value)  => {this.setState(value)})
   render() {
     this.context = this.context
-  
+    let redirect
+    if (this.state.isLoggedIn){
+      redirect = <Redirect to="/domain/" /> 
+    } else {
+      redirect = <Redirect to='/login/'/>
+    }
     return (
       <Hero className='app'isFullHeight >
         <BrowserRouter>
@@ -43,8 +50,9 @@ export default class App extends Component {
           email: this.state.email, 
           setLoggedInState: this.setLoggedInState}}>
           <Header/>
-          <HeroBody>
-          <Route path="/" component={authCheck(DomainPage)}/>
+          {redirect}
+          <HeroBody style={{margin: '5vh'}}>
+          <Route path="/"/>
           <Route path="/domain/" component={authCheck(DomainPage, this.state.token)}/>
           <Route path="/login/" component={UserLogin}/>
           <Route path="/register/" component={UserRegister}/>

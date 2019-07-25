@@ -21,7 +21,7 @@ export default class UserLogout extends Component {
     componentDidMount() {
         this.doLogout()
     }
-    
+
     render() {
         this.context = this.context
 
@@ -29,7 +29,7 @@ export default class UserLogout extends Component {
             return <div/>
         }
         return(
-            <Redirect to="/" /> 
+            <Redirect to="/login" /> 
         )
     }
 }
