@@ -1,27 +1,5 @@
 import React, { Component } from 'react';
 import '../App.css';
-<<<<<<< HEAD
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import DomainPage from './domainPage';
-
-
-
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <header className="App-header">
-        <Link to="/">Home Page</Link>
-        <Link to="/Domain/">API Testing</Link>
-        </header>
-        <Route path="/domain/" component={DomainPage}/>
-
-        <div>
-            </div>
-      </BrowserRouter>
-    </div>
-  );
-=======
 import { BrowserRouter, Route } from 'react-router-dom';
 import DomainPage from './domain/domainPage';
 import UserLogin from './user/userLogin';
@@ -74,12 +52,7 @@ export default class App extends Component {
       </div>
     );
   }
->>>>>>> db916f17359aff8ace3f95aaceee0b901eea7a7e
 }
 App.contextType = LoggedInContext
 
 
-<<<<<<< HEAD
-export default App;
-=======
->>>>>>> db916f17359aff8ace3f95aaceee0b901eea7a7e
