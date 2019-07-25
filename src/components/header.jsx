@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect, Link} from 'react-router-dom';
 import LoggedInContext  from './user/userContext'
 import { Button, HeroHeader, Navbar, NavItem, NavbarBrand, NavbarStart, NavbarEnd, Icon } from 'bloomer'
-
 export default class Header extends Component{
     render(){
         this.context = this.context
@@ -22,7 +21,7 @@ export default class Header extends Component{
         
         let logoutButton = 
                 <NavItem>
-                    <Button isSize='large' isColor='primary'>
+                    <Button isSize='large' isColor='danger'>
                         <LoggedInContext.Consumer>
                         {({isLoggedIn, setLoggedInState}) => isLoggedIn ? 
                             <Link to="/logout/" onClick={() => setLoggedInState()}>Logout</Link>: <Redirect to="/" />
@@ -46,7 +45,6 @@ export default class Header extends Component{
                     <Button isSize='large' isColor='primary'>
                         <LoggedInContext.Consumer>
                         {({email}) => 
-
                             <Link to="/profile/" value={email}>Profile</Link>
                         }
                         </LoggedInContext.Consumer>
@@ -54,27 +52,19 @@ export default class Header extends Component{
                 </NavItem>
             investmentSearchButton =
                 <NavItem>
-                    <Button isSize='large' isColor='primary'>
+                    <Button isSize='large' isColor='warning'>
                         <Link to="/domain/">Profity Manager</Link>
                     </Button>
                 </NavItem>
         }
-        
+
         return(
             <HeroHeader >
-                <Navbar className='is-primary'>
-                    <NavbarBrand>
-                        <Icon className="fa fa-github" />
-                    </NavbarBrand>
+                <Navbar className='is-primary' isDisplay='flex' style={{justifyContent: 'space-between'}}>
                     <NavbarStart>
-                        <NavItem>
-                            <Button isSize='large' isColor='primary'>
-                                <Link to="/">Home</Link>
-                            </Button>
-                        </NavItem>
-                        {investmentSearchButton}
-                        {profileButton}
+                    {investmentSearchButton}
                     </NavbarStart>
+                        {profileButton}
                     <NavbarEnd>
                         {signupButton}
                         {activeLogButton}

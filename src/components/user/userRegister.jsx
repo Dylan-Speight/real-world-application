@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import { Redirect } from 'react-router-dom'
+var jwtDecode = require('jwt-decode');
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 import { Container, Field, Label, Control, Input, Icon, Help, Button} from 'bloomer'
 var jwtDecode = require('jwt-decode');
 const uri = "https://magnanimous-goat-5432.herokuapp.com";
