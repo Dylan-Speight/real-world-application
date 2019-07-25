@@ -20,18 +20,18 @@
     - [Instructions on how to setup, configure, deploy and use the app](#Instructions-on-how-to-setup-configure-deploy-and-use-the-app)
   - [Design documentation](#Design-documentation)
     - [User stories](#User-stories)
-    - [Workflow diagram of the user journey/s.](#Workflow-diagram-of-the-user-journeys)
+    - [Workflow diagram of the user journey/s](#Workflow-diagram-of-the-user-journeys)
     - [Database ERD](#Database-ERD)
     - [Data Flow Diagram](#Data-Flow-Diagram)
     - [Details of project Management and Planning process](#Details-of-project-Management-and-Planning-process)
       - [Screenshots of trello boards](#Screenshots-of-trello-boards)
     - [Screenshots of app in progress](#Screenshots-of-app-in-progress)
   - [Short answer questions](#Short-answer-questions)
-    - [What are the most important aspects of quality software?](#What-are-the-most-important-aspects-of-quality-software)
-    - [What libraries are being used in the app and why?](#What-libraries-are-being-used-in-the-app-and-why)
-    - [A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?](#A-team-is-about-to-engage-in-a-project-developing-a-website-for-a-small-business-What-knowledge-and-skills-would-they-need-in-order-to-develop-the-project)
-    - [Within your own project what knowledge or skills were required to complete your project, and overcome challenges?](#Within-your-own-project-what-knowledge-or-skills-were-required-to-complete-your-project-and-overcome-challenges)
-    - [Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?](#Evaluate-how-effective-your-knowledge-and-skills-were-this-project-using-examples-and-suggest-changes-or-improvements-for-future-projects-of-a-similar-nature)
+    - [What are the most important aspects of quality software](#What-are-the-most-important-aspects-of-quality-software)
+    - [What libraries are being used in the app and why](#What-libraries-are-being-used-in-the-app-and-why)
+    - [A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project](#A-team-is-about-to-engage-in-a-project-developing-a-website-for-a-small-business-What-knowledge-and-skills-would-they-need-in-order-to-develop-the-project)
+    - [Within your own project what knowledge or skills were required to complete your project, and overcome challenges](#Within-your-own-project-what-knowledge-or-skills-were-required-to-complete-your-project-and-overcome-challenges)
+    - [Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature](#Evaluate-how-effective-your-knowledge-and-skills-were-this-project-using-examples-and-suggest-changes-or-improvements-for-future-projects-of-a-similar-nature)
 
 <!-- /code_chunk_output -->
 
@@ -99,7 +99,7 @@ Note: If you would like to make changes please fork the repo as well
 
 ![picture](/public/userStories.png)
 
-### Workflow diagram of the user journey/s.
+### Workflow diagram of the user journey/s
 
 ![picture](/public/userFlow.jpeg)
 
@@ -133,7 +133,7 @@ Note: If you would like to make changes please fork the repo as well
 
 ## Short answer questions
 
-### What are the most important aspects of quality software?
+### What are the most important aspects of quality software
 
 _**Flexibility and Extensibility**_
 
@@ -155,7 +155,7 @@ _**Functionality**_
 
 Functionality is the conformity of the software with actual requirements and specifications. If the software is unable to perform its intended purpose efficiently, in the best possible way then there is definitely room to be improved on. Also important is that it does not contain bugs or other issues that may impede the softwares ability to achieve its end goal for the user.
 
-### What libraries are being used in the app and why?
+### What libraries are being used in the app and why
 
 _**React**_
 
@@ -169,7 +169,7 @@ _**Mongoose**_
 
 _**Material UI**_
 
-### A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
+### A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project
 
 The team should first have a strong knowledge of the tech stack they plan on using for the website an example of this is knowing mongodb, react, express and node.js if they are planning on making it with the MERN stack. Next is knowing how to put it all together in a way that will make the best use of their time. Being knowledgeable in how a website is constructed and having a solid understanding of any data flow or anything else that may not be immediately obvious in the project.
 
@@ -179,7 +179,7 @@ After these aspects the team will still need a strong sense of design too put al
 
 Design plays a big part in the user experience but is not the only part that is important to it. The team will have to make sure that their website is also efficient and will give the user a great experience by reducing load times and making the site both accessible and usable.
   
-### Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
+### Within your own project what knowledge or skills were required to complete your project, and overcome challenges
 
 Technical
 Design
@@ -191,6 +191,6 @@ backend
 frontend
 linking
 
-### Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+### Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature
 
 yeah nah good
