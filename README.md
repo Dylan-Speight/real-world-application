@@ -16,7 +16,7 @@
     - [Problem definition/ purpose](#Problem-definition-purpose)
     - [Functionality / features](#Functionality--features)
     - [Screenshots](#Screenshots)
-    - [Tech stack (MERN)](#Tech-stack-MERN)
+    - [Tech stack (MERN) / What libraries are being used in the app and why](#Tech-stack-MERN--What-libraries-are-being-used-in-the-app-and-why)
     - [Instructions on how to setup, configure, deploy and use the app](#Instructions-on-how-to-setup-configure-deploy-and-use-the-app)
   - [Design documentation](#Design-documentation)
     - [User stories](#User-stories)
@@ -47,7 +47,7 @@
   
 ### Screenshots
   
-### Tech stack (MERN)
+### Tech stack (MERN) / What libraries are being used in the app and why
 
 _**|   Node.js    |**_
   
