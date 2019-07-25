@@ -192,6 +192,8 @@ Tuesday 23rd: Client suggested alternatives for data storage - implemented as re
 
 Wednesday 24th: Requested face-to-face correspondence to showcase application before submission, unfortunately they were unable to meet due to prior obligations.
 
+Thursday 25th: Demo'd the application for the client and explained that due to the deadline some of the requested features in the proposal were not able to be met. They understood the situation and were happy with the end result given the circumstances.
+
 #### Screenshots of trello boards
   
 ![picture](public/trello1.png)
