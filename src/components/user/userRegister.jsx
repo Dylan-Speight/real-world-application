@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import { Redirect } from 'react-router-dom'
+var jwtDecode = require('jwt-decode');
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 import { Container, Field, Label, Control, Input, Icon, Help, Button} from 'bloomer'
 
 export default class UserRegister extends Component {
@@ -21,7 +23,7 @@ export default class UserRegister extends Component {
     onSubmit = (event) => {
         
         event.preventDefault();
-        fetch('http://localhost:4000/api/register', {
+        fetch(`${uri}/api/register`, {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {
