@@ -25,7 +25,8 @@ export default function saveInvestment(property, deposit, interestRate, loanTerm
         propertyid: property.listing.id,
         userid: email
     }
-    fetch('${uri}/api/saveinvestment', {
+    fetch(`${uri}/api/saveinvestment`, {
+
         method: 'POST',
         body: JSON.stringify(formattedData),
         headers: {

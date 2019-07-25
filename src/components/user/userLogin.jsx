@@ -4,6 +4,9 @@ import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
 const uri = "https://magnanimous-goat-5432.herokuapp.com";
 import { Container, Field, Label, Control, Input, Help, Button} from 'bloomer'
+import { Link } from 'react-router-dom';
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
+
 
 export default class UserLogin extends Component {
     constructor(props) {
