@@ -60,11 +60,11 @@ _**|   Express    |**_
 _**|   React    |**_
 
 React is a javascript library for building user interfaces. React is optimal for fetching rapidly changing data that needs to be recorded. Recently it has been made even more powerful by introducing hooks in 16.8.0 allowing for its own inbuilt state management allowing for easier state management without redux.
-    
+
 _**|   Mongodb    |**_
 
 MongoDB is a cross-platform document-oriented database program. It is a non relational database that allows for data to be stored and recieved without the data being modeled outside the tabular relations used in relational databases. Data is conceptualized as an object this allows the database to be a lot more intuitive to work with since 'everything is an object' it also allows for a lot more flexibility in its design  as we are not bound to columns and rows.
-    
+
 _**|   Mongoose    |**_
 
 Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.

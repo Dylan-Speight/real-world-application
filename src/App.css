@@ -99,3 +99,36 @@ Link:visited {
 }
 
 
+
+.investmentResults{
+  display:flex;
+  width: 50%;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.investmentCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.investmentImageAddress{
+  padding:1vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: #61dafb;
+
+}
+.investmentImage img{
+  width: 15vw;
+  /* height: 200px; */
+}
+
+.investmentPriceDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background: grey;
+}
+
