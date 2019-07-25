@@ -42,13 +42,14 @@ export default class App extends Component {
           token: this.state.token, 
           email: this.state.email, 
           setLoggedInState: this.setLoggedInState}}>
-          <Header />
+          <Header/>
           <HeroBody>
+          <Route path="/" component={authCheck(DomainPage)}/>
           <Route path="/domain/" component={authCheck(DomainPage, this.state.token)}/>
           <Route path="/login/" component={UserLogin}/>
           <Route path="/register/" component={UserRegister}/>
           <Route path="/logout/" component={Logout} />
-          <Route path="/profile/" component={authCheck(UserProfile, this.state.token)} />
+          <Route path="/profile/" component={authCheck(UserProfile)} />
           </HeroBody>
           </LoggedInContext.Provider>
 

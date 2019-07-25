@@ -101,7 +101,7 @@ export default class UserLogin extends Component {
                     </Control>
                 { invalidCredentials.password}
                 </Field>
-                <Field>
+                <Field isDisplay='flex' style={{'justifyContent': 'space-around'}}>
                     <Control>
                         <Button onClick={this.onSubmit} isColor='primary'>
                             Login
