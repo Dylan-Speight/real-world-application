@@ -38,6 +38,7 @@
     - [Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature](#Evaluate-how-effective-your-knowledge-and-skills-were-this-project-using-examples-and-suggest-changes-or-improvements-for-future-projects-of-a-similar-nature)
       - [Our Project Management](#Our-Project-Management)
       - [Our technical understanding](#Our-technical-understanding)
+      - [Our design and UX/UI](#Our-design-and-UXUI)
 
 <!-- /code_chunk_output -->
 
@@ -209,3 +210,7 @@ As far as project management went in the beginning everything ran well and we we
 #### Our technical understanding
 
 Overall we had a firm understanding of the tech that we were using. A few of the newer softwares and libraries that we tried to implement gave us some trouble such as graphql which was later thrown out as it was becoming an inconvenience at best. Deploying was also something we hadnt done much of so setting that up turned into somewhat of a headache linking everything together properly with environment variables and passwords etc.
+
+#### Our design and UX/UI
+
+Again I think we did quite well in this area using bloomer and bulma though due to time constraints we couldnt go quite as deep as we would have liked to, however, bulma allowed us to get as much done as we did. Without a framework it could have taken us a lot longer to get the styling and design of the site done. Everything in the UX UI is again a the best we could do with the limited time we had in the end due to unexpected bugs or holdups during our process. We have made it as user friendly and smooth as possible to allow for a nice overall experience while using the application.
