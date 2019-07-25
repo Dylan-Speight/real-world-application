@@ -91,7 +91,7 @@ export default class UserProfile extends Component {
                                     </Notification>
                                 </Column>
                         </Columns>
-                        <Button isColor='danger' onClick={() => removeInvestment(investment, this.context.email)}>
+                        <Button isColor='danger' onClick={() => removeInvestment({investment, email: this.context.email})}>
                             Remove investment
                         </Button>
                 </CardContent>

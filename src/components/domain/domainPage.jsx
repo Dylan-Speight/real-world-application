@@ -167,7 +167,7 @@ class DomainPage extends Component {
                                     <Field>
                                         <Label>Suburb</Label>
                                         <Control>
-                                            <Input type="text" name="suburb" placeholder='Suburb' onChange={this.handleLocationChange} required/>
+                                            <Input type="text" name="suburb" placeholder='Suburb' onChange={this.handleLocationChange}/>
                                         </Control>
                                     </Field>
                                 </Column>
@@ -200,7 +200,7 @@ class DomainPage extends Component {
                                     <Field>
                                         <Label>Deposit</Label>
                                         <Control>
-                                            <Input type="number" placeholder='Postcode' required name="deposit" onChange={this.handleFinanceChange}/>
+                                            <Input type="number" placeholder='Deposit' required name="deposit" onChange={this.handleFinanceChange}/>
                                         </Control>
                                     </Field>
                                 </Column>
