@@ -3,8 +3,8 @@ import DomainController from './domainController'
 import GoogleMapsController from '../google_maps/googleMapsController'
 import LoggedInContext from '../user/userContext'
 import saveInvestment from '../investment/saveInvestment'
-import { Columns, Column, Field, Control, Section, Content, Container, 
-    Select, Icon, Label, TextArea, Help, Radio, Checkbox, Input, Button, 
+import { Columns, Column, Field, Control, Container, 
+    Select, Icon, Label, Input, Button, 
     Card, CardContent, CardHeader, CardHeaderTitle, CardHeaderIcon, Notification} from 'bloomer'
 class DomainPage extends Component {
     constructor(props) {
@@ -24,7 +24,8 @@ class DomainPage extends Component {
             interestRate : undefined,
             loanTerm : undefined,
             purchaseCosts : undefined,
-            ongoingCosts: undefined
+            ongoingCosts: undefined,
+            investmentSaved: false
         };
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleLocationChange = this.handleLocationChange.bind(this)
@@ -33,7 +34,6 @@ class DomainPage extends Component {
 
     handleLocationChange(event) {
         const { value, name } = event.target;      
-        console.log(name, value)  
         this.setState({[name]:value})
     }
 
@@ -93,15 +93,17 @@ class DomainPage extends Component {
                 return (
                 <Card key={index+1}>
                     <CardHeader>
+                        <Label>
                         {property.listing.propertyDetails.displayableAddress}
+                        </Label>
                     </CardHeader>
                     <CardContent>
                         <Container>
-                            <Columns isCentered>
+                            <Columns isDisplay='flex' isCentered>
                                 {property.listing.media.map((media, index) => {
                                     return (
-                                        <Column>
-                                        <img alt="" src={media.url}/>
+                                        <Column isDisplay='flex' key={index+1}>
+                                        <img alt=""  src={media.url}/>
                                         </Column>
                                     )
                                 })}
@@ -125,7 +127,7 @@ class DomainPage extends Component {
                                     </Notification>
                                 </Column>
                         </Columns>
-                        <Button onClick={() => saveInvestment(property, deposit, interestRate, loanTerm, purchaseCosts, ongoingCosts, this.context.email)}/>
+                        <Button isColor='success' onClick={() => { this.setState({investmentSaved: true}); saveInvestment(property, deposit, interestRate, loanTerm, purchaseCosts, ongoingCosts, this.context.email)}}>Save Investment</Button>
                     </Container>
                 </CardContent>
             </Card>)
@@ -155,10 +157,10 @@ class DomainPage extends Component {
         return(
                 <Container>
                     <Card isFullWidth>
-                        <CardHeader>
+                        <CardHeader isFullWidth>
                             <CardHeaderTitle>Enter your information</CardHeaderTitle>
                             <CardHeaderIcon onClick={this.cardControl.bind(this)}>
-                                <Icon className="fa fa-angle-down" onClick={() => this.cardControl.bind(this)}></Icon>
+                                <Icon className="fa fa-angle-down" style={{background: 'grey'}} onClick={() => this.cardControl.bind(this)}></Icon>
                             </CardHeaderIcon>
                         </CardHeader>
                         <CardContent className={this.state.cardStatus}>
@@ -184,12 +186,13 @@ class DomainPage extends Component {
                                         <Label>State:</Label>
                                         <Control >
                                             <Select name="state" isFullWidth onChange={this.handleLocationChange}> 
-                                                <option value='NSW'>New South Wales</option>
                                                 <option value='QLD'>Queensland</option>
-                                                <option value='SA'>South Australia</option>
-                                                <option value='TAS'>Tasmania</option>
+                                                <option value='NSW'>New South Wales</option>
                                                 <option value='VIC'>Victoria</option>
+                                                <option value='SA'>South Australia</option>
                                                 <option value='WA'>Western Australia</option>
+                                                <option value='TAS'>Tasmania</option>
+
                                             </Select>
                                         </Control>
                                     </Field>
@@ -239,10 +242,11 @@ class DomainPage extends Component {
                                     </Field>
                                 </Column>
                             </Columns>
-                            <Field>
+                            
+                            <Field isDisplay="flex" style={{'justify-content':'space-around'}}>
                                 <Control>
                                     <Button onClick={this.handleSubmit} isColor='primary'>
-                                        Search
+                                        <p>Search</p>
                                     </Button>
                                 </Control>
                             </Field>

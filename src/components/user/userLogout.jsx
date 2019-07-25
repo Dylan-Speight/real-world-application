@@ -17,9 +17,11 @@ export default class UserLogout extends Component {
         this.setState({isLoggingOut: false})
         this.context.setLoggedInState({isLoggedIn: false, email: "", token: ""})
     }
+
     componentDidMount() {
         this.doLogout()
     }
+
     render() {
         this.context = this.context
 
@@ -27,7 +29,7 @@ export default class UserLogout extends Component {
             return <div/>
         }
         return(
-            <Redirect to="/" /> 
+            <Redirect to="/login" /> 
         )
     }
 }

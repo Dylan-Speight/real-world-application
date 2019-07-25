@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import { Redirect } from 'react-router-dom'
+var jwtDecode = require('jwt-decode');
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 import { Container, Field, Label, Control, Input, Icon, Help, Button} from 'bloomer'
 var jwtDecode = require('jwt-decode');
 const uri = "https://magnanimous-goat-5432.herokuapp.com";
@@ -47,7 +49,7 @@ export default class UserRegister extends Component {
     render(){
       if (this.state.isRegistering){
         return(
-          <Container>
+          <Container className='customForm'>
           <Field> 
               <Label>Email</Label>
               <Control>
@@ -61,7 +63,7 @@ export default class UserRegister extends Component {
                   <Input type="password" name='password' placeholder="Password" onChange={this.handleChange} required/>
                   </Control>
           </Field>
-          <Field>
+          <Field isDisplay='flex' style={{'justifyContent': 'space-around'}}>
               <Control>
                   <Button onClick={this.onSubmit} isColor='primary'>
                       Create Account

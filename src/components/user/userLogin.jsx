@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import LoggedInContext  from './userContext'
 import cookie from 'react-cookies';
+import { Link } from 'react-router-dom';
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 import { Container, Field, Label, Control, Input, Help, Button} from 'bloomer'
 import { Link } from 'react-router-dom';
 const uri = "https://magnanimous-goat-5432.herokuapp.com";
@@ -104,7 +106,7 @@ export default class UserLogin extends Component {
                     </Control>
                 { invalidCredentials.password}
                 </Field>
-                <Field>
+                <Field isDisplay='flex' style={{'justifyContent': 'space-around'}}>
                     <Control>
                         <Button onClick={this.onSubmit} isColor='primary'>
                             Login
