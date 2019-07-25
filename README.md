@@ -25,6 +25,8 @@
     - [Database ERD](#Database-ERD)
     - [Data Flow Diagram](#Data-Flow-Diagram)
     - [Details of project Management and Planning process](#Details-of-project-Management-and-Planning-process)
+      - [Project plan and timeline](#Project-plan-and-timeline)
+      - [Client communications](#Client-communications)
       - [Screenshots of trello boards](#Screenshots-of-trello-boards)
     - [Screenshots of app in progress](#Screenshots-of-app-in-progress)
   - [Short answer questions](#Short-answer-questions)
@@ -53,6 +55,13 @@
  Users are able to sign up to the app and log into their account giving them their own personal profile to search through properties that they may be interested in. Users will be able to search and filter their results based on the state, postcode, suburb, street, house number price etc. If the user finds a investment property they are interested they are able to save it to their profile so that they can come back and quickly access the information relevant to their choices.
   
 ### Screenshots
+
+![picture](/public/01_login_page.png)
+![picture](/public/02_signup_page.png)
+![picture](/public/04_search_page.png)
+![picture](/public/05_search_page_with_results.png)
+![picture](/public/05_search_page_with_results_expanded.png)
+![picture](/public/06_user_profile_with_saved_investments.png)
   
 ### Tech stack (MERN) / What libraries are being used in the app and why
 
@@ -134,8 +143,54 @@ Note: If you would like to make changes please fork the repo as well
   
 ### Details of project Management and Planning process
 
-- Project plan and timeline
-- Client communications
+#### Project plan and timeline
+  
+ _**10/07/2019 - 12/07/2019**_
+
+- We had talks with our client and decided on the project that we were going to undertake.
+- After this we began setting out how we were going to go about work flow set up our trello and started initializing the project.
+- Repos were created and the basic structure was outlined in the back and front ends of the application
+- Work was started on the api in the frontend and allowing the application to pull from the Domain api
+- Backend was initialized and basic structure for database was set out for functionality.
+- We pushed up our initial deploy for the application to ensure that everything was running smoothly.
+
+ _**15/07/2019 - 17/07/2019**_
+
+- More work was put into getting the api to talk to the application frontend
+- Backend and frontend were connected to make sure that the front end could access the database and any functions set up in the back end
+- api figured out allowing us to pull the information that we required from it.
+
+ _**17/07/2019 - 19/07/2019**_
+
+- With the backend and frontend hooked up and the api calls working we started getting the domain api to pull through the google maps api allowing for us to map and track the properties we were looking for and mark them according to our requests.
+- We set up a database in the cloud with mongoDB atlas to allow us to deploy to a database in production as localhost is not able to be used.
+- Bugfixing and getting the different pieces of the application to talk with each other online.
+
+ _**22/07/2019 - 25/07/2019**_
+
+- Created user interface with register, login and log out functionality as well as authentication for the user
+- Updated components in the front end to allow for the user to CRUD properties to the database.
+- Calculators added to the front end to determine various returns and other variables in the properties being looked at.
+- Application frontend was styled and made more user friendly.
+- Ongoing bugfixing and updating to ensure deployment was successful.
+- Documentation and README work to explain the application and our process throughout the project.
+- Finished Documentation
+- Final deploy
+- Submit
+  
+#### Client communications
+
+Contacted client about potential project, client replied with initial problem/need
+
+First week finalised proposal with client.
+
+Thursday 18th: Explained current state of App to client and they requested changes to the JWT verification procedure which we obliged
+
+Monday 22nd: Discussed calculator and adjusted formula to better suit needs
+
+Tuesday 23rd: Client suggested alternatives for data storage - implemented as requested
+
+Wednesday 24th: Requested face-to-face correspondence to showcase application before submission, unfortunately they were unable to meet due to prior obligations.
 
 #### Screenshots of trello boards
   
