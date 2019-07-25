@@ -93,7 +93,9 @@ class DomainPage extends Component {
                 return (
                 <Card key={index+1}>
                     <CardHeader>
+                        <Label>
                         {property.listing.propertyDetails.displayableAddress}
+                        </Label>
                     </CardHeader>
                     <CardContent>
                         <Container>
@@ -184,12 +186,13 @@ class DomainPage extends Component {
                                         <Label>State:</Label>
                                         <Control >
                                             <Select name="state" isFullWidth onChange={this.handleLocationChange}> 
-                                                <option value='NSW'>New South Wales</option>
                                                 <option value='QLD'>Queensland</option>
-                                                <option value='SA'>South Australia</option>
-                                                <option value='TAS'>Tasmania</option>
+                                                <option value='NSW'>New South Wales</option>
                                                 <option value='VIC'>Victoria</option>
+                                                <option value='SA'>South Australia</option>
                                                 <option value='WA'>Western Australia</option>
+                                                <option value='TAS'>Tasmania</option>
+
                                             </Select>
                                         </Control>
                                     </Field>

@@ -42,8 +42,11 @@ export default class UserProfile extends Component {
             }
             return (
                 <Container>
+                    <Columns className='is-multiline'>
                 {this.state.investments.map((investment, index) => {
                     return (
+                        <Column>
+
                     <Card key={index+1}>
                         <CardHeader>
                             <CardHeaderTitle>
@@ -108,9 +111,12 @@ export default class UserProfile extends Component {
                             </Button>
                     </CardContent>
                 </Card>
-                )
+            </Column>)
+
             })}
-            </Container>
+        </Columns>
+
+    </Container>
             )
         } else {
             return (

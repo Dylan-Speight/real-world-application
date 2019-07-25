@@ -49,7 +49,7 @@ export default class UserRegister extends Component {
     render(){
       if (this.state.isRegistering){
         return(
-          <Container>
+          <Container className='customForm'>
           <Field> 
               <Label>Email</Label>
               <Control>
@@ -63,7 +63,7 @@ export default class UserRegister extends Component {
                   <Input type="password" name='password' placeholder="Password" onChange={this.handleChange} required/>
                   </Control>
           </Field>
-          <Field>
+          <Field isDisplay='flex' style={{'justifyContent': 'space-around'}}>
               <Control>
                   <Button onClick={this.onSubmit} isColor='primary'>
                       Create Account

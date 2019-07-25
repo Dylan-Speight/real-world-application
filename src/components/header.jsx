@@ -3,6 +3,16 @@ import { Redirect, Link} from 'react-router-dom';
 import LoggedInContext  from './user/userContext'
 import { Button, HeroHeader, Navbar, NavItem, NavbarBrand, NavbarStart, NavbarEnd, Icon } from 'bloomer'
 export default class Header extends Component{
+    constructor(props){
+        super(props)
+this.state = {
+    path: this.props
+}    }
+
+
+componentDidMount(){
+    console.log(this.props)
+}
     render(){
         this.context = this.context
         let activeLogButton
@@ -10,14 +20,8 @@ export default class Header extends Component{
         let signupButton
         let investmentSearchButton
         let isLoggedIn = this.context.isLoggedIn
+        
 
-        let loginButton =   
-            <Button isSize='large' isColor='primary'>
-                <LoggedInContext.Consumer>
-                {({isLoggedIn, setLoggedInState}) => !isLoggedIn ? 
-                    <Link to="/login/" onClick={() => setLoggedInState()}>Login</Link>: <Redirect to="/domain" />}
-                </LoggedInContext.Consumer>
-            </Button> 
         
         let logoutButton = 
                 <NavItem>
@@ -30,7 +34,6 @@ export default class Header extends Component{
                 </NavItem> 
         
         if (!isLoggedIn) {
-            activeLogButton = loginButton
             signupButton = 
             <NavItem>
                 <Button isSize='large' isColor='primary'>
@@ -60,7 +63,7 @@ export default class Header extends Component{
 
         return(
             <HeroHeader >
-                <Navbar className='is-primary' isDisplay='flex' style={{justifyContent: 'space-between'}}>
+                <Navbar className='is-primary is-fixed-top' isDisplay='flex' style={{justifyContent: 'space-between', background: 'white'}}>
                     <NavbarStart>
                     {investmentSearchButton}
                     </NavbarStart>
