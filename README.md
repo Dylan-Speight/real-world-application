@@ -31,7 +31,13 @@
     - [What are the most important aspects of quality software](#What-are-the-most-important-aspects-of-quality-software)
     - [A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project](#A-team-is-about-to-engage-in-a-project-developing-a-website-for-a-small-business-What-knowledge-and-skills-would-they-need-in-order-to-develop-the-project)
     - [Within your own project what knowledge or skills were required to complete your project, and overcome challenges](#Within-your-own-project-what-knowledge-or-skills-were-required-to-complete-your-project-and-overcome-challenges)
+      - [Project management](#Project-management)
+      - [Technical understanding](#Technical-understanding)
+      - [Design](#Design)
+      - [UX/UI](#UXUI)
     - [Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature](#Evaluate-how-effective-your-knowledge-and-skills-were-this-project-using-examples-and-suggest-changes-or-improvements-for-future-projects-of-a-similar-nature)
+      - [Our Project Management](#Our-Project-Management)
+      - [Our technical understanding](#Our-technical-understanding)
 
 <!-- /code_chunk_output -->
 
@@ -177,16 +183,29 @@ Design plays a big part in the user experience but is not the only part that is 
   
 ### Within your own project what knowledge or skills were required to complete your project, and overcome challenges
 
-Technical
-Design
-ux/ui
-project management
-organisation
-api
-backend
-frontend
-linking
+#### Project management
+
+As a team in the beginning of the project we talked out what we would work on based on our strengths and started assigning in what order we would be building and who would be working on what. Trello and slack allowed us to keep track of what the other was doing and communicate any issues we would have during the work process. Trello also allowed us to track how long tasks were taking as we completed them and made sprints a breeze with how we could move our cards around.
+
+#### Technical understanding
+
+Firm understanding of the tech stack we were using and the general flow of our application and how we were going to be structuring the data and how it will flow through from the frontend to the backend.
+Confidence in the MERN stack and its libraries allowed us to fix anything that might have broken and made the process of actually building the application much smoother.
+
+#### Design
+
+We both had a good sense of how the application would run from a design perspective which allowed us to work through the application one on backend one on frontend and get the app up and running quickly. Having the premise of the app established early with the client gave us plenty of time to think through our app and build out a design that would deliver us to our end goals
+
+#### UX/UI
+
+After everything was completed we made the application as smooth as possible for the user and streamlined the processes on the users side of the application. Also making it look good and readable so that the user isnt just assailed with stimulus and unordered information.
 
 ### Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature
 
-yeah nah good
+#### Our Project Management
+
+As far as project management went in the beginning everything ran well and we were powering through however some hiccups happened with graphql and small errors made some tasks takefar longer than they should have which threw us a little. We overcame these issues and carried on pushing through fixing snags in our database deployment and some small variables that broke.
+
+#### Our technical understanding
+
+Overall we had a firm understanding of the tech that we were using. A few of the newer softwares and libraries that we tried to implement gave us some trouble such as graphql which was later thrown out as it was becoming an inconvenience at best. Deploying was also something we hadnt done much of so setting that up turned into somewhat of a headache linking everything together properly with environment variables and passwords etc.
