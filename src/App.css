@@ -6,13 +6,6 @@
   min-height: 100vh;
 }
 
-img.propertyImage {
-  height: 100% !important;
-  max-height: 120px;
-  object-fit: cover;
-}
-
-
 Link:visited {
   color: white;
 }
@@ -22,22 +15,57 @@ Link:visited {
 }
 
 .googleMap { 
-
   height: 50vh;
-}
-
-
-.propertyResults {
-  height: 75vh;
-  overflow: scroll;
 }
 
 .investmentResults {
   overflow: scroll;
 }
 
+.propertyResults{
+  overflow: scroll;
+  height: 100%;
+}
+.hero-body{
+  display: flex;
+  flex-direction: column;
+}
+
+img.investmentImage {
+  display: flex;
+  border-radius: 1vh;
+  justify-content: space-around;
+  max-height: 15vh;
+  object-fit: cover;
+}
 
 .priceTitle {
   text-decoration: underline;
+}
+
+
+@media (max-width: 900px) {
+  .investmentImageColumns{
+    flex-wrap: wrap;
+  }
+  .investmentImages {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    min-width: 200px;
+  }
+
+}
+
+.card {
+  background: lightpink!important;
+}
+
+.card-header {
+  background: lightblue!important;
+
+  }
+
+.card-content {
+  background: lightgreen!important;
 }
 /*# sourceMappingURL=App.css.map */

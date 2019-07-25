@@ -15,7 +15,6 @@ export default function authCheck(ComponentToProtect, token) {
     componentDidMount() {
       if (!token){
         token = cookie.load('token')
-
       }
       fetch('http://localhost:4000/checkToken', {
         headers: {
