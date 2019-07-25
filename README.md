@@ -19,6 +19,7 @@
     - [Tech stack (MERN) / What libraries are being used in the app and why](#Tech-stack-MERN--What-libraries-are-being-used-in-the-app-and-why)
     - [Instructions on how to setup, configure, deploy and use the app](#Instructions-on-how-to-setup-configure-deploy-and-use-the-app)
   - [Design documentation](#Design-documentation)
+    - [Design process](#Design-process)
     - [User stories](#User-stories)
     - [Workflow diagram of the user journey/s](#Workflow-diagram-of-the-user-journeys)
     - [Database ERD](#Database-ERD)
@@ -28,7 +29,6 @@
     - [Screenshots of app in progress](#Screenshots-of-app-in-progress)
   - [Short answer questions](#Short-answer-questions)
     - [What are the most important aspects of quality software](#What-are-the-most-important-aspects-of-quality-software)
-    - [What libraries are being used in the app and why](#What-libraries-are-being-used-in-the-app-and-why)
     - [A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project](#A-team-is-about-to-engage-in-a-project-developing-a-website-for-a-small-business-What-knowledge-and-skills-would-they-need-in-order-to-develop-the-project)
     - [Within your own project what knowledge or skills were required to complete your project, and overcome challenges](#Within-your-own-project-what-knowledge-or-skills-were-required-to-complete-your-project-and-overcome-challenges)
     - [Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature](#Evaluate-how-effective-your-knowledge-and-skills-were-this-project-using-examples-and-suggest-changes-or-improvements-for-future-projects-of-a-similar-nature)
@@ -51,7 +51,7 @@
 
 _**|   Node.js    |**_
   
-  Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. This allows the developer to run scripts server-side enabling a dynamic webpage. It also allows for javascript to be used in the backend so that javascript can be used frontend to backend.
+  Node.js is an open-source, cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser. This allows us to run scripts server-side enabling a dynamic webpage. It also allows for us to use javascript in the backend so that we can use javascript throughout the entire application, frontend to backend.
   
 _**|   Express    |**_
   
@@ -59,23 +59,33 @@ _**|   Express    |**_
   
 _**|   React    |**_
 
-React is a javascript library for building user interfaces. React is optimal for fetching rapidly changing data that needs to be recorded. Recently it has been made even more powerful by introducing hooks in 16.8.0 allowing for its own inbuilt state management allowing for easier state management without redux.
+React is a javascript library for building user interfaces. React is optimal for fetching rapidly changing data that needs to be recorded. Recently it has been made even more powerful by introducing hooks in 16.8.0 allowing for its own inbuilt state management allowing for easier state management without redux. React allows us to build out our front end with easy to implement components allowing for more flexibility when approaching the build process.
 
 _**|   Mongodb    |**_
 
-MongoDB is a cross-platform document-oriented database program. It is a non relational database that allows for data to be stored and recieved without the data being modeled outside the tabular relations used in relational databases. Data is conceptualized as an object this allows the database to be a lot more intuitive to work with since 'everything is an object' it also allows for a lot more flexibility in its design  as we are not bound to columns and rows.
+MongoDB is a cross-platform document-oriented database program. It is a non relational database that allows for data to be stored and recieved without the data being modeled outside the tabular relations used in relational databases. Data is conceptualized as an object this allows the database to be a lot more intuitive to work with since 'everything is an object' it also allows for a lot more flexibility in its design  as we are not bound to columns and rows and can use more customiszed data input documents instead of having to rely on the schema to do the work.
 
 _**|   Mongoose    |**_
 
-Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+Mongoose is an Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB. It allows us to easily speak with our database in the backend.
 
 ### Instructions on how to setup, configure, deploy and use the app
+
+1. Fork and clone the front end and backend repos
+2. Enter the server directory and run the yarn install command
+3. Repeat for the front end file
+4. You will need to change the environment variables to suit your own needs
+5. You will also have to change what database the backend is pointing at by changing the mongo_uri variable in the index.js file line 27
+6. After this go into the front end file and change where the uris are pointing throughout
+7. Deploy the backend
+8. Deploy the front end
+9. Hey presto Application goodness
 
 Note: If you would like to make changes please fork the repo as well
 
 ## Design documentation
 
-- Design process
+### Design process
   
   _**In the beginning: Planning**_
 
@@ -154,20 +164,6 @@ User interfaces are the only visible parts of software according to the viewpoin
 _**Functionality**_
 
 Functionality is the conformity of the software with actual requirements and specifications. If the software is unable to perform its intended purpose efficiently, in the best possible way then there is definitely room to be improved on. Also important is that it does not contain bugs or other issues that may impede the softwares ability to achieve its end goal for the user.
-
-### What libraries are being used in the app and why
-
-_**React**_
-
-_**MongoDB**_
-
-_**Express**_
-
-_**Node.js**_
-
-_**Mongoose**_
-
-_**Material UI**_
 
 ### A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project
 
