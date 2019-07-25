@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import 'bulma'
+import { Hero } from 'bloomer'
+import { Redirect, BrowserRouter, Route } from 'react-router-dom';
 import DomainPage from './domain/domainPage';
 import UserLogin from './user/userLogin';
 import authCheck from './authCheck';
@@ -11,6 +13,7 @@ import Header from './header'
 import UserProfile from './user/userProfile'
 import LoggedInContext from './user/userContext'
 import checkCookie from './user/checkCookie'
+import { HeroBody } from 'bloomer/lib/layout/Hero/HeroBody';
 
 
 
@@ -27,29 +30,32 @@ export default class App extends Component {
       this.setState(response)
   }
 
-  setLoggedInState = ((value)  => { this.setState(value); console.log(this.state)})
+  setLoggedInState = ((value)  => {this.setState(value)})
   render() {
     this.context = this.context
+  
     return (
-      <div className="App">
+      <Hero className='app'isFullHeight >
         <BrowserRouter>
         <LoggedInContext.Provider value={{
           isLoggedIn: this.state.isLoggedIn,
           token: this.state.token, 
           email: this.state.email, 
           setLoggedInState: this.setLoggedInState}}>
-
-          <Header />
+          <Header/>
+          <HeroBody>
+          <Route path="/" component={authCheck(DomainPage)}/>
           <Route path="/domain/" component={authCheck(DomainPage, this.state.token)}/>
-          <Route path="/login" component={UserLogin}/>
-          <Route path="/register" component={UserRegister}/>
-          <Route path="/logout" component={Logout} />
-          <Route path="/profile" component={UserProfile} />
+          <Route path="/login/" component={UserLogin}/>
+          <Route path="/register/" component={UserRegister}/>
+          <Route path="/logout/" component={Logout} />
+          <Route path="/profile/" component={authCheck(UserProfile)} />
+          </HeroBody>
           </LoggedInContext.Provider>
 
         </BrowserRouter>
 
-      </div>
+      </Hero>
     );
   }
 }

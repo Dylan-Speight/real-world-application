@@ -10,7 +10,7 @@ export class DomainController {
         this.data = {"locations": [
               {"suburb": props.suburb,
                 "postCode": props.postcode,
-            "state" : "QLD",
+            "state" : props.state,
             "includeSurroundingSuburbs":false
         }
             ], "page": 1,"pageSize": 99, "sort": {"sortKey": "Price"}}
@@ -42,7 +42,7 @@ export class DomainController {
                     return (this.token)             
         }).catch(err => console.error(err))
     }
-    
+
     getListingById(props) {
             return axios.post(`https://api.domain.com.au/v1/listings/residential/_search`, this.data, {
                 headers: {
@@ -52,25 +52,35 @@ export class DomainController {
             .then(result => {
                 const { data } = result;
                 data.map((property) => { 
-                    if ((property.type === "PropertyListing") && (property.listing.hasOwnProperty("media")) && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
-                        this.propertiesToRemove.map(currentProperty => {                             
-                            if (property.listing.hasOwnProperty(currentProperty)) {
-                            delete property.listing[currentProperty]
-                        }})
-                        let newValues = this.repaymentCalculator(property.listing.priceDetails.displayPrice, this.finances)
-                            const priceDetails = property.listing.priceDetails
-                            priceDetails.displayPrice = newValues[0]
-                            priceDetails.monthlyRepayments = newValues[1]
-                            
-                        this.results.push(property)
-                    }
-                    if (property.listing.listingType === "Rent"){
-                        this.rent.push(property.listing.priceDetails.displayPrice)
+                    if (property.type === "PropertyListing") {
+                        if ((property.listing.hasOwnProperty("media")) && (property.listing.listingType === "Sale") && (/[/$/]/.test(property.listing.priceDetails.displayPrice))){
+                            this.propertiesToRemove.map(currentProperty => {                             
+                                if (property.listing.hasOwnProperty(currentProperty)) {
+                                delete property.listing[currentProperty]
+                            }})
+                            let newValues = this.repaymentCalculator(property.listing.priceDetails.displayPrice, this.finances)
+                                const priceDetails = property.listing.priceDetails
+                                priceDetails.displayPrice = newValues[0]
+                                priceDetails.monthlyRepayments = newValues[1]
+                                
+                            this.results.push(property)
+                        }
+                        if (property.listing.listingType === "Rent"){
+                            if (this.hasNumber(property.listing.priceDetails.displayPrice)){
+                            this.rent.push(property.listing.priceDetails.displayPrice)
+                            }
+                        }
                     }
                 })
                 if (data.length === 0) {
                     this.results.map((property, index) => {
+                        
+                        if (this.rent.length !== 0){
                         property.listing.priceDetails.estimatedProfit = this.averageRent(this.rent, index, this.results.length) - property.listing.priceDetails.monthlyRepayments
+                       
+                        } else {
+                            property.listing.priceDetails.estimatedProfit = "Unable to calculate"
+                        } 
                     })
                     return this.results
                 }
@@ -80,7 +90,9 @@ export class DomainController {
                 }
             }).catch(err => console.log(err))
     }
-
+    hasNumber(myString) {
+        return /\d/.test(myString);
+    }
     repaymentCalculator(propertyPrice, finances) {
         let price = propertyPrice.match(/((?:[$0-9]{1,3}[ \.,]?)*[ \.,]?[0-9]+(?:[mMkK])*)/gm)[0].toString().replace(/[,$]/g,"")
         let adjustedPrice = parseInt(price)
