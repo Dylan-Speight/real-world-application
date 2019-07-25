@@ -19,8 +19,6 @@ export default function findUserInvestment(email) {
 }
 
 export function saveUserInvestment(email, investment) {
-    console.log(email)
-    console.log("INVEST")
     fetch(`${uri}/api/saveinvestment`, {
         method: 'POST',
         

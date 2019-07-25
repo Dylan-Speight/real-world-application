@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import cookie from 'react-cookies';
-import {Redirect, Link} from 'react-router-dom';
-import LoggedInContext, { LoggedInProvider, LoggedInConsumer } from './userContext'
+import {Redirect} from 'react-router-dom';
+import LoggedInContext from './userContext'
 
 export default class UserLogout extends Component {
     constructor(props) {
@@ -16,11 +16,8 @@ export default class UserLogout extends Component {
         cookie.save('isLoggedIn', "false", {path: "/"})
         this.setState({isLoggingOut: false})
         this.context.setLoggedInState({isLoggedIn: false, email: "", token: ""})
-        console.log(this.state.isLoggingOut)
     }
     componentDidMount() {
-        console.log(this.context)
-
         this.doLogout()
     }
     render() {
