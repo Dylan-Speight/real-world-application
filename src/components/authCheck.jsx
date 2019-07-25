@@ -15,15 +15,11 @@ export default function authCheck(ComponentToProtect, token) {
 
     }
     componentDidMount() {
-<<<<<<< HEAD
-      fetch(`${uri}/checkToken`, {
-=======
       if (!token){
         token = cookie.load('token')
 
       }
-      fetch('http://localhost:4000/checkToken', {
->>>>>>> 0a07211176248a69dfdf611ad1214a791506ce86
+      fetch(`${uri}/checkToken`, {
         headers: {
           Authorization: token}
         })
