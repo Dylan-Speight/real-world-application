@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 import LoggedInContext  from './userContext'
 import cookie from 'react-cookies';
+import { Link } from 'react-router-dom';
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
 import { Container, Field, Label, Control, Input, Help, Button} from 'bloomer'
+import { Link } from 'react-router-dom';
+const uri = "https://magnanimous-goat-5432.herokuapp.com";
+
 
 export default class UserLogin extends Component {
     constructor(props) {
@@ -26,7 +31,7 @@ export default class UserLogin extends Component {
         this.setState({passwordField: null, emailField: null, incorrect: null, loginRes: null})
         const { email, password } = this.state
         event.preventDefault();
-        fetch('http://localhost:4000/api/authenticate', {
+        fetch(`${uri}/api/authenticate`, {
             method: 'POST',
             body: JSON.stringify(
                 {email, password}
