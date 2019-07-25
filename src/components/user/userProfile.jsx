@@ -87,12 +87,12 @@ export default class UserProfile extends Component {
                                     </Column>
                                     <Column>
                                         <Notification>
-                                            Interest rate: ${investment.price.interestRate}
+                                            Interest rate: {investment.price.interestRate}%
                                         </Notification>
                                     </Column>
                                     <Column>
                                         <Notification>
-                                        Loan term: ${investment.price.loanTerm}
+                                        Loan term: {investment.price.loanTerm} Years
                                         </Notification>
                                     </Column>
                                     <Column>
